@@ -8,7 +8,8 @@
 ### Activate backend
 #### Open a terminal and enter
 `cd backend`  
-
+`pip install -r requirements.txt`
+`python manage.py migrate`
 `python manage.py runserver`  
 
 
