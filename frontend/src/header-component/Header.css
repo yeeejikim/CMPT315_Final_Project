@@ -1,0 +1,28 @@
+.header {
+    background-color: #76c893;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 10px 20px;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.5rem;
+}
+
+.logotext {
+    color: black;
+}
+
+.user-options {
+    font-size: 1.5rem;
+    margin-left: auto;
+}
+
+.profile-pic{
+    color: black;
+}
