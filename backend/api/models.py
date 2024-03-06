@@ -23,7 +23,7 @@ class Menu(models.Model):
     item_price = models.DecimalField(max_digits = 6, decimal_places = 2)
     item_desc = models.TextField(blank = True)
     item_availability = models.IntegerField(blank = True, null = True)
-    restaurant = models.ForeignKey(Restaurant, on_delete = models.CASCADE)
+    restaurant = models.ForeignKey(Restaurant, related_name = 'menu', on_delete = models.CASCADE)
 
 class Order(models.Model):
     PLACED = 'placed'
