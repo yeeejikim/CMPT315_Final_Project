@@ -27,10 +27,10 @@ class Menu(models.Model):
     # order = models.ForeignKey(Order, related_name = 'menu_order', on_delete = models.CASCADE, default = 1)
 
 class Order(models.Model):
-    PLACED = 'placed'
-    INPROGRESS = 'inProgress'
-    PICKUP = 'pickup'
-    COMPLETED = 'completed'
+    PLACED = 'Order placed'
+    INPROGRESS = 'Order in progress'
+    PICKUP = 'Ready for pickup'
+    COMPLETED = 'Order completed'
     STATUS_CHOICES = (
         (PLACED, 'Order placed'),
         (INPROGRESS, 'Order in progress'),
