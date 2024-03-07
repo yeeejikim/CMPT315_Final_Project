@@ -17,7 +17,6 @@ class RestaurantSerializer(serializers.ModelSerializer):
         model = Restaurant
         fields = ('rest_id', 'rest_name', 'manager_id', 'manager_pass', 'rest_phone', 'rest_address')
 
-
 class OrderSerializer(serializers.ModelSerializer):
     # menu = MenuSerializer(many = True, read_only = True)
     class Meta: 
