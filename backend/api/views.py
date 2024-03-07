@@ -1,22 +1,26 @@
 from django.shortcuts import render
 from rest_framework import generics, viewsets
-from .serializers import CustomerSerializer, RestaurantSerializer, MenuSerializer, OrderSerializer
-from .models import Customer, Restaurant, Menu, Order
+from .serializers import CustomerSerializer, RestaurantSerializer, MenuItemSerializer, OrderSerializer, ManagerSerializer
+from .models import Customers, Restaurants, MenuItems, Orders, Managers
 
 # Create your views here.
 
 class CustomerView(viewsets.ModelViewSet):
     serializer_class = CustomerSerializer
-    queryset = Customer.objects.all()
+    queryset = Customers.objects.all()
 
 class RestaurantView(viewsets.ModelViewSet):
     serializer_class = RestaurantSerializer
-    queryset = Restaurant.objects.all()
+    queryset = Restaurants.objects.all()
 
-class MenuView(viewsets.ModelViewSet):
-    serializer_class = MenuSerializer
-    queryset = Menu.objects.all()
+class MenuItemView(viewsets.ModelViewSet):
+    serializer_class = MenuItemSerializer
+    queryset = MenuItems.objects.all()
 
 class OrderView(viewsets.ModelViewSet):
     serializer_class = OrderSerializer
-    queryset = Order.objects.all()
+    queryset = Orders.objects.all()
+
+class ManagerView(viewsets.ModelViewSet):
+    serializer_class = ManagerSerializer
+    queryset = Managers.objects.all()
