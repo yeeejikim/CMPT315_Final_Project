@@ -16,6 +16,7 @@ class Restaurants(models.Model):
     manager_pass = models.CharField(max_length = 20)
     rest_phone = models.CharField(max_length = 20)
     rest_address = models.CharField(max_length =  50)
+    rest_image = models.URLField(max_length = 200, default = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png')
 
 class Managers(models.Model):
     manager_id = models.AutoField(primary_key = True)
@@ -27,6 +28,7 @@ class MenuItems(models.Model):
     item_price = models.DecimalField(max_digits = 6, decimal_places = 2)
     item_desc = models.TextField(blank = True)
     item_availability = models.IntegerField(blank = True, null = True)
+    item_image = models.URLField(max_length = 200, default = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png')
     restaurant = models.ForeignKey(Restaurants, related_name = 'menu_restaurant', on_delete = models.CASCADE)
     # order = models.ForeignKey(Order, related_name = 'menu_order', on_delete = models.CASCADE, default = 1)
 
