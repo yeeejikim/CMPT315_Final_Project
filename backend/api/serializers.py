@@ -12,13 +12,13 @@ class MenuSerializer(serializers.ModelSerializer):
         fields = ('item_id', 'item_name', 'item_price', 'item_desc', 'item_availability', 'restaurant')
 
 class RestaurantSerializer(serializers.ModelSerializer):
-    menu = MenuSerializer(many = True, read_only = True)
+    # menu = MenuSerializer(many = True, read_only = True)
     class Meta:
         model = Restaurant
-        fields = ('rest_id', 'rest_name', 'manager_id', 'manager_pass', 'rest_phone', 'rest_address', 'menu')
-
+        fields = ('rest_id', 'rest_name', 'manager_id', 'manager_pass', 'rest_phone', 'rest_address')
 
 class OrderSerializer(serializers.ModelSerializer):
+    # menu = MenuSerializer(many = True, read_only = True)
     class Meta: 
         model = Order
-        fields = ('order_id', 'order_time', 'order_status', 'order_instruction', 'customer', 'restaurant')
+        fields = ('order_id', 'order_time', 'order_status', 'order_instruction', 'order_pickup', 'customer', 'restaurant', 'menu')
