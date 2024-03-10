@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Table from 'react-bootstrap/Table'
 import Button from "react-bootstrap/Button";
+import "./Restaurants.css";
+import { CardList } from "../components/cardlist/restcardlist.component";
 
 const Restaurants = () => {
     const [restaurants, setRestaurants] = useState([]);
@@ -17,7 +19,8 @@ const Restaurants = () => {
 
     return(
         <main className="content">
-            <h1>List of restaurants</h1>
+            <h1 className="restaurantslist">Restaurants</h1>
+            <CardList restaurants={restaurants} />
             <body>
                 {restaurants.map((restaurant) => {
                     return(
