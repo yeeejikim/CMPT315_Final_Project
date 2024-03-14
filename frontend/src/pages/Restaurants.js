@@ -21,13 +21,6 @@ const Restaurants = () => {
         <main className="content">
             <h1 className="restaurantslist">Restaurants</h1>
             <CardList restaurants={restaurants} />
-            <body>
-                {restaurants.map((restaurant) => {
-                    return(
-                        <h5>{restaurant.rest_name}</h5>
-                        )
-                })}
-            </body>
         </main>
     )
 }
