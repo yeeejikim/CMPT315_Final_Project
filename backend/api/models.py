@@ -12,11 +12,12 @@ class Customers(models.Model):
 class Restaurants(models.Model):
     rest_id = models.AutoField(primary_key = True)
     rest_name = models.CharField(max_length = 20, default = 'name')
-    manager_id = models.CharField(max_length = 20)
-    manager_pass = models.CharField(max_length = 20)
     rest_phone = models.CharField(max_length = 20)
     rest_address = models.CharField(max_length =  50)
+    rest_open = models.TimeField('%H:%M', default = '11:00')
+    rest_close = models.TimeField('%H:%M', default = '21:00')
     rest_image = models.URLField(max_length = 200, default = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png')
+
 
 class Managers(models.Model):
     manager_id = models.AutoField(primary_key = True)
