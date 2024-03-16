@@ -1,17 +1,59 @@
-.card-container {
-    display: flex;
-    flex-direction: column;
+.menu-card-container {
+    flex: 0 0 30%; /* Adjust the width of each card */
     background-color: #95dada;
     border: 1px solid grey;
     border-radius: 5px;
+    margin: 10px; /* Add spacing between cards */
     padding: 16px;
     cursor: pointer;
-    -moz-osx-font-smoothing: grayscale;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    transition: transform 0.25s ease-out;
+    text-align: center; /* Center content horizontally */
 }
 
-.card-container:hover {
-    transform: scale(1.05);
+.quantity-controls input[type="number"] {
+    width: 100px; /* Set the width of the input field */
+    height: 30px; /* Set the height of the input field */
+    border-radius: 5px; /* Make the buttons rounded */
+    text-align: center; /* Center text horizontally */
+    /* Hide the up and down arrows */
+    -webkit-appearance: none; /* Remove default styling */
+    -moz-appearance: textfield; /* Show as text field for Firefox */
+}
+
+/* Hide the up and down arrows in webkit browsers */
+.quantity-controls input[type="number"]::-webkit-inner-spin-button,
+.quantity-controls input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.quantity-controls button {
+    width: 30px; /* Set the width of the buttons */
+    height: 30px; /* Set the height of the buttons */
+    border: none; /* Remove the border */
+    border-radius: 5px; /* Make the buttons rounded */
+    background-color: #ffffff; /* Add background color */
+    cursor: pointer; /* Add cursor pointer */
+    transition: background-color 0.3s; /* Add transition for smooth hover effect */
+    margin: 5px; /* Add margin to the right to create a gap */
+    border: 2px solid black; /* Add black border */
+}
+
+.quantity-controls button:hover {
+    background-color: #bbb; /* Change background color on hover */
+}
+
+.cartbutton {
+    width: 100px; /* Set the width of the button */
+    height: 30px; /* Set the height of the button */
+    border: none; /* Remove the border */
+    border-radius: 5px; /* Make the button rounded */
+    background-color: green; /* Set the background color */
+    color: white; /* Set text color to white */
+    cursor: pointer; /* Add cursor pointer */
+    transition: background-color 0.3s; /* Add transition for smooth hover effect */
+    border: 2px solid black; /* Add black border */
+}
+
+.cartbutton:hover {
+    background-color: darkgreen; /* Change background color on hover */
 }

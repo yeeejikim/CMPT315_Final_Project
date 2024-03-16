@@ -1,15 +1,12 @@
 .card-container {
-    display: flex;
-    flex-direction: column;
+    flex: 0 0 30%; /* Adjust the width of each card */
     background-color: #95dada;
     border: 1px solid grey;
     border-radius: 5px;
+    margin: 10px; /* Add spacing between cards */
     padding: 16px;
     cursor: pointer;
-    -moz-osx-font-smoothing: grayscale;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    transition: transform 0.25s ease-out;
+    text-align: center; /* Center content horizontally */
 }
 
 .card-container:hover {

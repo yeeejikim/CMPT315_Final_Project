@@ -1,9 +1,10 @@
 .cardlist {
-    width: 85vw;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 20px;
+    width: 50%; /* Adjust the width as needed */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap to the next line */
+    justify-content: flex-start; /* Align cards to the left of the screen */
 }
 
 @media only screen and (max-width: 815px) {

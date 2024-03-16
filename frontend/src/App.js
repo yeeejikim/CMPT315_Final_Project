@@ -15,7 +15,6 @@ function App() {
   return (
     <Router>
       <div>
-        <Header />
         <Routes>
           <Route path="/" element={<Restaurants />} />
           <Route path="/menu" element={<Menu />} />
