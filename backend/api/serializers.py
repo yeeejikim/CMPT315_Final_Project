@@ -12,10 +12,10 @@ class MenuItemSerializer(serializers.ModelSerializer):
         fields = ('item_id', 'item_name', 'item_price', 'item_desc', 'item_availability', 'item_image', 'restaurant')
 
 class RestaurantSerializer(serializers.ModelSerializer):
-    # menu = MenuSerializer(many = True, read_only = True)
+    menu_restaurant = MenuItemSerializer(many = True, read_only = True)
     class Meta:
         model = Restaurants
-        fields = ('rest_id', 'rest_name', 'rest_phone', 'rest_address', 'rest_open', 'rest_close', 'rest_image')
+        fields = ('rest_id', 'rest_name', 'rest_phone', 'rest_address', 'rest_open', 'rest_close', 'rest_image', 'menu_restaurant')
 
 class ManagerSerializer(serializers.ModelSerializer):
     class Meta:
