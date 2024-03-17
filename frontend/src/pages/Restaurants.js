@@ -14,7 +14,7 @@ const Restaurants = () => {
 
     useEffect(() => {
         const fetchRestaurants = async () => {
-            const response = await axios.get("/restaurant");
+            const response = await axios.get("/restaurants");
             setRestaurants(response.data);
             setFilteredRestaurants(response.data); // Set initial filtered list
         };
