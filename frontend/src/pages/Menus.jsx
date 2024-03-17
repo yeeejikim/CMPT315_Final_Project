@@ -11,11 +11,11 @@ import { Link } from 'react-router-dom';
 function Menu() {
     const { restaurantId } = useParams();
     const [menuItems, setMenuItems] = useState([]);
-    const [filteredItems, setFilteredItems] = useState([]);
-
+    const [filteredItems, setFilteredItems] = useState(menuItems);
+    
     useEffect(() => {
         const fetchMenus = async() => {
-            const response = await axios.get("/menu");
+            const response = await axios.get(`/menus/${restaurantId}`);
             setMenuItems(response.data);
             setFilteredItems(response.data);
         };
