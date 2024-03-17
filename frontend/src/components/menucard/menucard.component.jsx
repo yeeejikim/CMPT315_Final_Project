@@ -3,7 +3,7 @@ import './menucard.styles.css'
 import { useState, useEffect, Component } from "react"
 
 export const Card = ({ item }) => {
-    const { item_id, item_name, item_price } = item;
+    const { item_id, item_name, item_price, item_image } = item;
     const [quantity, setQuantity] = useState(1); // State to track quantity
 
     const handleQuantityChange = (event) => {
@@ -31,7 +31,8 @@ export const Card = ({ item }) => {
     return (
         <div className='menu-card-container'>
             <h2>{item_name}</h2>
-            <img alt='menu' src={`https://robohash.org/${item_id}?set=set2&size =15x15`}></img>
+            <img alt='menu' src={item_image} width={100}></img>
+            <h6>$ {item_price}</h6>
             <div className="quantity-controls">
                 <button onClick={decreaseQuantity}>-</button>
                 <input

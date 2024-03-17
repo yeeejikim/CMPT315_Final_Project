@@ -15,7 +15,7 @@ function Menu() {
     
     useEffect(() => {
         const fetchMenus = async() => {
-            const response = await axios.get(`/menus/${restaurantId}`);
+            const response = await axios.get(`/menus`);
             setMenuItems(response.data);
             setFilteredItems(response.data);
         };
