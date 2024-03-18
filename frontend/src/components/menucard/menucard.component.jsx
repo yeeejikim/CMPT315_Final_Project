@@ -23,7 +23,7 @@ export const Card = ({ item }) => {
     };
 
     const addToCart = () => {
-        // Implement your add to cart functionality here
+        // Implement add to cart functionality here
         console.log(`Added ${quantity} ${item_name}(s) to cart`);
     };
 

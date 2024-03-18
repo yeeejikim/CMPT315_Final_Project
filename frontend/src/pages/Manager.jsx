@@ -3,24 +3,32 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Table from 'react-bootstrap/Table'
 import Button from "react-bootstrap/Button";
-import "./Restaurants.css";
-import { CardList } from "../components/cardlist/restcardlist.component";
-import { SearchBar } from '../searchbar/searchbar.component';
+import "./Manager.css";
+import { OrderCardList } from "../components/ordercardlist/ordercardlist.component";
 import { Link } from 'react-router-dom';
 
-const Restaurants = () => {
-    const [restaurants, setRestaurants] = useState([]);
-    const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+const Manager = () => {
+    const [orders, setOrders] = useState([]);
+    const [filteredOrders, setFilteredOrders] = useState([]);
+    const [managerRestaurantId, setManagerRestaurantId] = useState(null);
     const [showProfileMenu, setShowProfileMenu] = useState(false);
-
+    const managerId = 1; // Fetch later
 
     useEffect(() => {
-        const fetchRestaurants = async () => {
-            const response = await axios.get("/restaurants");
-            setRestaurants(response.data);
-            setFilteredRestaurants(response.data); // Set initial filtered list
+        const fetchManagerData = async () => {
+            const managerResponse = await axios.get(`/managers/${managerId}`);
+            const managerData = managerResponse.data;
+            setManagerRestaurantId(managerData.restaurant);
         };
-        fetchRestaurants();
+        fetchManagerData();
+    }, [managerId]);
+
+    useEffect(() => {
+        const fetchOrders = async () => {
+            const response = await axios.get("/orders");
+            setOrders(response.data);
+        };
+        fetchOrders();
 
         document.addEventListener("click", handleClickOutside);
         return () => {
@@ -28,25 +36,27 @@ const Restaurants = () => {
         };
     }, []);
 
+    useEffect(() => {
+        if (managerRestaurantId !== null) {
+            const filtered = orders.filter(order => order.restaurant === managerRestaurantId);
+            setFilteredOrders(filtered);
+        }
+    }, [orders, managerRestaurantId]);
+
+
     const handleClickOutside = (event) => {
         console.log('Clicked element:', event.target);
         const profileMenu = document.querySelector(".profile-button");
         if (profileMenu && !profileMenu.contains(event.target)) {
             setShowProfileMenu(false);
+            console.log('Profile menu closed');
         }
     };
 
-    const handleInput = (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        const filtered = restaurants.filter(restaurant =>
-            restaurant && restaurant.rest_name && restaurant.rest_name.toLowerCase().includes(searchTerm)
-        );
-        setFilteredRestaurants(filtered);
-    };
-
     const toggleProfileMenu = () => {
-
+        console.log('Before toggle:', showProfileMenu);
         setShowProfileMenu(!showProfileMenu);
+        console.log('After toggle:', showProfileMenu);
     };
 
     return (
@@ -56,10 +66,6 @@ const Restaurants = () => {
                     <div className="logo">
                         <Link className='logotext' to="/">Logo</Link>
                     </div>
-                    <SearchBar
-                        placeholder='Search Restaurant'
-                        handleInput={handleInput}
-                    />
                     <div className="user-options">
                         <button className='profile-button' onClick={toggleProfileMenu}>Profile</button>
                         <div className={`profile-menu ${showProfileMenu ? 'show' : ''}`}>
@@ -73,10 +79,10 @@ const Restaurants = () => {
                     </div>
                 </div>
             </header>
-            <h1 className="restaurantslist">Restaurants</h1>
-            <CardList restaurants={filteredRestaurants} />
+            <h1 className="restaurantslist">Orders</h1>
+            <OrderCardList orders={filteredOrders} />
         </main>
     );
 }
 
-export default Restaurants
+export default Manager

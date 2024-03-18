@@ -1,0 +1,26 @@
+.order-card-container {
+    flex: 0 0 30%;
+    background-color: #95dada;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin: 10px; 
+    padding: 16px;
+    cursor: pointer;
+    text-align: center; 
+}
+
+.order-card-buttons {
+    margin-top: 10px; 
+    border-radius: 5px;
+}
+
+.adjust-button {
+    margin-right: 10px; 
+    border-radius: 5px;
+}
+
+.complete-button{
+    border-radius: 5px;
+    background-color: green;
+    color: aliceblue;
+}

@@ -1,0 +1,37 @@
+.restaurantslist {
+    text-align: center;
+}
+
+.profile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 200px;
+    /* Adjust width as needed */
+    height: 100vh;
+    background-color: white;
+    transition: transform 0.3s ease-out;
+    transform: translateX(100%);
+    z-index: 9999;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-menu.show {
+    transform: translateX(0);
+}
+
+.profile-menu .profile-links {
+    padding: 20px;
+}
+
+.profile-menu .profile-links a {
+    display: block;
+    margin-bottom: 10px;
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.profile-menu .profile-links a:hover {
+    color: #333;
+}
