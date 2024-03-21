@@ -66,6 +66,7 @@ const Restaurants = () => {
                             <div className="profile-links">
                                 <Link to="/manager">Manager</Link>
                                 <Link to="/profile">Profile</Link>
+                                <Link to="/cart">Cart</Link>
                                 <Link to="/orders">Orders</Link>
                                 <Link to="/settings">Settings</Link>
                             </div>
