@@ -8,7 +8,7 @@ import { CardList } from "../components/cardlist/restcardlist.component";
 import { SearchBar } from '../searchbar/searchbar.component';
 import { Link } from 'react-router-dom';
 
-const Restaurants = () => {
+const Restaurants = ({}) => {
     const [restaurants, setRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [showProfileMenu, setShowProfileMenu] = useState(false);

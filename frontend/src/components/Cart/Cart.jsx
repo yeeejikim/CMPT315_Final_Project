@@ -1,38 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CartItem from './CartItem';
 import Header from '../../header-component/Header';
 
-const Cart = ({ cartItems }) => {
+const Cart = ({ cartItems, onUpdateCart }) => {
+  const [updatedCart, setUpdatedCart] = useState(cartItems); // Maintain local state for cart
+
+  const handleQuantityChange = (itemId, newQuantity) => {
+    const updatedItems = [...updatedCart]; // Copy the cart items array
+    const index = updatedItems.findIndex((item) => item.id === itemId);
+    if (index !== -1) {
+      updatedItems[index].quantity = newQuantity;
+      setUpdatedCart(updatedItems);
+      onUpdateCart(updatedItems); // Call parent function to update global state (optional)
+    }
+  };
+
+  const handleRemoveItem = (itemId) => {
+    const updatedItems = updatedCart.filter((item) => item.id !== itemId);
+    setUpdatedCart(updatedItems);
+    onUpdateCart(updatedItems); // Call parent function to update global state (optional)
+  };
+
   return (
     <><Header></Header><div className="cart-container">
           <h2>Your Cart</h2>
-          {cartItems.length === 0 ? (
+          {updatedCart.length === 0 ? (
               <p>Your cart is empty.</p>
           ) : (
               <ul>
-                  {cartItems.map((item) => (
-                      <li key={item.id}>
-                          <div className="cart-item">
-                              <img src={item.image} alt={item.name} width="100" />
-                              <div className="item-details">
-                                  <h3>{item.name}</h3>
-                                  <p>Price: ${item.price}</p>
-                                  {/*Quantity control */}
-                                  <div className="quantity-control">
-                                      <button>-</button>
-                                      <span>{item.quantity}</span>
-                                      <button>+</button>
-                                  </div>
-                              </div>
-                          </div>
-                      </li>
+                  {updatedCart.map((item) => (
+                      <CartItem
+                          key={item.id}
+                          item={item}
+                          onQuantityChange={handleQuantityChange}
+                          onRemoveItem={handleRemoveItem} />
                   ))}
               </ul>
           )}
-          {/* Cart total */}
-          {cartItems.length > 0 && (
+          {/* Cart total (logic updated to reflect quantity changes) */}
+          {updatedCart.length > 0 && (
               <div className="cart-total">
-                  <p>Total: ${cartItems.reduce((total, item) => total + item.price * item.quantity, 0)}</p>
+                  <p>
+                      Total: $
+                      {updatedCart.reduce((total, item) => total + item.price * item.quantity, 0)}
+                  </p>
               </div>
           )}
       </div></>

@@ -7,27 +7,35 @@ import Header from './header-component/Header.jsx';
 import Cart from './components/Cart/Cart.jsx';
 import CartItem from './components/Cart/CartItem.jsx';
 
-function App() {
-  const [cartItems, setCartItems] = useState([]); // State for cart items
+const App = () => {
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    const storedCart = localStorage.getItem('cartItems');
+    const storedCart = localStorage.getItem('cart');
     if (storedCart) {
       setCartItems(JSON.parse(storedCart));
     }
-  }, []); // Empty dependency array to run only once on mount
+  }, []);
 
+  // Function for adding items to cart (replace with your logic)
   const handleAddToCart = (item) => {
-    setCartItems([...cartItems, item]);
-    localStorage.setItem('cartItems', JSON.stringify(cartItems)); 
+    const existingCart = [...cartItems];
+    const existingItemIndex = existingCart.findIndex((cartItem) => cartItem.id === item.id);
+    if (existingItemIndex !== -1) {
+      existingCart[existingItemIndex].quantity += 1;
+    } else {
+      existingCart.push({ ...item, quantity: 1 });
+    }
+    setCartItems(existingCart);
+    localStorage.setItem('cart', JSON.stringify(existingCart));
   };
 
   return (
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<Restaurants />} />
-          <Route path="/menu/:restaurantId" element={<Menu />} />
+          <Route path="/" element={<Restaurants onAddTocart = {handleAddToCart} />} />
+          <Route path="/menu/:restaurantId" element={<Menu onAddTocart = {handleAddToCart} />} />
           <Route path="/manager" element={<Manager />} />
           <Route path="/cart" element={<Cart cartItems={cartItems} />} />
         </Routes>
