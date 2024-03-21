@@ -38,5 +38,7 @@ urlpatterns = [
     # path('restaurant/<int:pk>/update/', views.RestaurantUpdateAPIView.as_view()),
     path('order/', views.OrderListCreateAPIView.as_view()),
     path('order/<int:pk>/', views.OrderDetailAPIView.as_view()),
-    path('order/<int:pk>/update/', views.OrderUpdateAPIView.as_view())
+    path('order/<int:pk>/update/', views.OrderUpdateAPIView.as_view()),
+    path('order/post/', views.OrderCreateAPIView.as_view())
+
 ]
