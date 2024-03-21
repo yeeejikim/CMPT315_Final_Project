@@ -23,9 +23,13 @@ export const Card = ({ item }) => {
     };
 
     const addToCart = () => {
-        // Implement add to cart functionality here
-        console.log(`Added ${quantity} ${item_name}(s) to cart`);
-    };
+        // Add item to local cart data structure
+        const cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+        cart.push({ ...item, quantity });  // Include quantity in cart item
+        localStorage.setItem('cart', JSON.stringify(cart));
+    
+        console.log('Item added'); 
+      };
 
     // Change src later
     return (

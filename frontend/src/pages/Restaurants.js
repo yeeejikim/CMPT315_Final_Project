@@ -8,7 +8,7 @@ import { CardList } from "../components/cardlist/restcardlist.component";
 import { SearchBar } from '../searchbar/searchbar.component';
 import { Link } from 'react-router-dom';
 
-const Restaurants = () => {
+const Restaurants = ({}) => {
     const [restaurants, setRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [showProfileMenu, setShowProfileMenu] = useState(false);
@@ -66,6 +66,7 @@ const Restaurants = () => {
                             <div className="profile-links">
                                 <Link to="/manager">Manager</Link>
                                 <Link to="/profile">Profile</Link>
+                                <Link to="/cart">Cart</Link>
                                 <Link to="/orders">Orders</Link>
                                 <Link to="/settings">Settings</Link>
                             </div>

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics, viewsets
 from .serializers import CustomerSerializer, RestaurantSerializer, MenuItemSerializer, OrderSerializer, ManagerSerializer
 from .models import Customers, Restaurants, MenuItems, Orders, Managers
-
+from django.http import JsonResponse
 # Create your views here.
 
 class CustomerView(viewsets.ModelViewSet):
@@ -24,3 +24,4 @@ class OrderView(viewsets.ModelViewSet):
 class ManagerView(viewsets.ModelViewSet):
     serializer_class = ManagerSerializer
     queryset = Managers.objects.all()
+    
