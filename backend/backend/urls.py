@@ -22,12 +22,23 @@ from api import views
 router = routers.DefaultRouter()
 # router.register(r'students', views.StudentView, 'Student')
 router.register(r'customers', views.CustomerView, 'Customers')
-router.register(r'restaurants', views.RestaurantView, 'Restaurants')
+router.register(r'restaurants', views.RestaurantsView, 'Restaurants')
 router.register(r'menus', views.MenuItemView, 'MenuItems')
 router.register(r'orders', views.OrderView, 'Orders')
 router.register(r'managers', views.ManagerView, 'Managers')
+# router.register(r'restaurant/(?P<pk>[^/.]+)', views.RestaurantView, 'Restaurant')
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
+    path('restaurant/', views.RestaurantListAPIView.as_view()),
+    path('restaurant/<int:pk>/', views.RestaurantDetailAPIView.as_view()),
+    # path('restaurant/<int:pk>/update/', views.RestaurantUpdateAPIView.as_view()),
+    path('order/', views.OrderListCreateAPIView.as_view()),
+    path('order/<int:pk>/', views.OrderDetailAPIView.as_view()),
+    path('order/<int:pk>/update/', views.OrderUpdateAPIView.as_view()),
+    path('order/post/', views.OrderCreateAPIView.as_view())
+
 ]

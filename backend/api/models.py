@@ -53,4 +53,3 @@ class Orders(models.Model):
     customer = models.ForeignKey(Customers, related_name = 'order_customer', on_delete = models.CASCADE)
     restaurant = models.ForeignKey(Restaurants, related_name = 'order_restaurant', on_delete = models.CASCADE)
     menuItems = models.ManyToManyField(MenuItems, related_name='menu', blank=False)
-
