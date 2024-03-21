@@ -1,7 +1,7 @@
 
 from rest_framework import generics, viewsets
 from rest_framework.response import Response
-from rest_framework.mixins import UpdateModelMixin
+from rest_framework.mixins import UpdateModelMixin, CreateModelMixin
 from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404, get_list_or_404
 from .serializers import CustomerSerializer, RestaurantSerializer, MenuItemSerializer, OrderSerializer, ManagerSerializer
@@ -56,8 +56,13 @@ class OrderDetailAPIView(generics.RetrieveAPIView):
     serializer_class = OrderSerializer
     lookup_field = 'pk'
 
+class OrderCreateAPIView(generics.CreateAPIView, CreateModelMixin):
+    queryset = Orders.objects.all()
+    serializer_class = OrderSerializer
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
 class OrderUpdateAPIView(generics.UpdateAPIView, UpdateModelMixin):
-    # permission_classes = [IsAuthenticated]
     queryset = Orders.objects.all()
     serializer_class = OrderSerializer
     lookup_field = 'pk'

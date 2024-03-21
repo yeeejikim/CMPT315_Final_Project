@@ -9,19 +9,15 @@ export const OrderCard = ({ order }) => {
 
     const [status, setStatus] = useState(order_status);
     const [pickupTime, setPickupTime] = useState(order_pickup);
-    const statusOptions = ["Order Placed", "Order in Progress", "Ready for Pickup", "Order Completed"];
-      
+    const statusOptions = ["Order placed", "Order in progress", "Ready for pickup", "Order completed"];
+
     const adjustOrder = async () => {
-        try {
-            const response = await axios.put(`sorder/${order_id}/update/`,
-            {
-                "order_status": status,
-                // order_pickup: pickupTime
-            });
-            console.log('Order adjusted successfully:', response.data);
-        } catch (error) {
-            console.error('Error adjusting order:', error);
-        }
+        const response = axios.put("http://127.0.0.1:8000/order/1/update/", {
+                "order_status":status
+                // "order_pickup":pickupTime
+            })
+            .then((response) => {console.log(response.data)})
+            .catch((error) => {console.error(error.toJSON())})
     };
 
     return (
