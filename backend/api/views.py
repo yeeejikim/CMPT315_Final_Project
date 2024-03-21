@@ -1,18 +1,24 @@
 
+
 from rest_framework import generics, viewsets
+from rest_framework.response import Response
+from rest_framework.mixins import UpdateModelMixin, CreateModelMixin
+from rest_framework.permissions import IsAuthenticated
+from django.shortcuts import get_object_or_404, get_list_or_404
 from rest_framework.response import Response
 from rest_framework.mixins import UpdateModelMixin, CreateModelMixin
 from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404, get_list_or_404
 from .serializers import CustomerSerializer, RestaurantSerializer, MenuItemSerializer, OrderSerializer, ManagerSerializer
 from .models import Customers, Restaurants, MenuItems, Orders, Managers
-
+from django.http import JsonResponse
 # Create your views here.
 
 class CustomerView(viewsets.ModelViewSet):
     serializer_class = CustomerSerializer
     queryset = Customers.objects.all()
 
+class RestaurantsView(viewsets.ModelViewSet):
 class RestaurantsView(viewsets.ModelViewSet):
     serializer_class = RestaurantSerializer
     queryset = Restaurants.objects.all()
