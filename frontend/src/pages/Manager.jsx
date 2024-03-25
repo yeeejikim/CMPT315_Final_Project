@@ -45,18 +45,14 @@ const Manager = () => {
 
 
     const handleClickOutside = (event) => {
-        console.log('Clicked element:', event.target);
         const profileMenu = document.querySelector(".profile-button");
         if (profileMenu && !profileMenu.contains(event.target)) {
             setShowProfileMenu(false);
-            console.log('Profile menu closed');
         }
     };
 
     const toggleProfileMenu = () => {
-        console.log('Before toggle:', showProfileMenu);
         setShowProfileMenu(!showProfileMenu);
-        console.log('After toggle:', showProfileMenu);
     };
 
     return (
@@ -72,6 +68,7 @@ const Manager = () => {
                             <div className="profile-links">
                                 <Link to="/manager">Manager</Link>
                                 <Link to="/profile">Profile</Link>
+                                <Link to="/cart">Cart</Link>
                                 <Link to="/orders">Orders</Link>
                                 <Link to="/settings">Settings</Link>
                             </div>

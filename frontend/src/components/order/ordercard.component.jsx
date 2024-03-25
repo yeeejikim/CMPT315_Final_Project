@@ -13,11 +13,11 @@ export const OrderCard = ({ order }) => {
 
     const adjustOrder = async () => {
         const response = axios.put("http://127.0.0.1:8000/order/1/update/", {
-                "order_status":status
-                // "order_pickup":pickupTime
-            })
-            .then((response) => {console.log(response.data)})
-            .catch((error) => {console.error(error.toJSON())})
+            "order_status": status,
+            "order_pickup": pickupTime
+        })
+            .then((response) => { console.log(response.data) })
+            .catch((error) => { console.error(error.toJSON()) })
     };
 
     return (
@@ -48,7 +48,7 @@ export const OrderCard = ({ order }) => {
             <div>
                 <h>Order Pickup Time: </h>
                 <input
-                    type="time"
+                    type="datetime-local"
                     value={pickupTime}
                     onChange={(e) => setPickupTime(e.target.value)}
                 />
