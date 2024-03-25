@@ -29,7 +29,6 @@ const Restaurants = ({}) => {
     }, []);
 
     const handleClickOutside = (event) => {
-        console.log('Clicked element:', event.target);
         const profileMenu = document.querySelector(".profile-button");
         if (profileMenu && !profileMenu.contains(event.target)) {
             setShowProfileMenu(false);
