@@ -6,8 +6,12 @@ import Button from "react-bootstrap/Button";
 import "./Manager.css";
 import { OrderCardList } from "../components/ordercardlist/ordercardlist.component";
 import { Link } from 'react-router-dom';
+import OrdersTab from "../components/tabs/OrdersTab";
+import CompletedOrdersTab from "../components/tabs/CompletedOrdersTab";
+import StatisticsTab from "../components/tabs/StatisticsTab";
 
 const Manager = () => {
+    const [activeTab, setActiveTab] = useState('orders');
     const [orders, setOrders] = useState([]);
     const [filteredOrders, setFilteredOrders] = useState([]);
     const [managerRestaurantId, setManagerRestaurantId] = useState(null);
@@ -45,18 +49,18 @@ const Manager = () => {
 
 
     const handleClickOutside = (event) => {
-        console.log('Clicked element:', event.target);
         const profileMenu = document.querySelector(".profile-button");
         if (profileMenu && !profileMenu.contains(event.target)) {
             setShowProfileMenu(false);
-            console.log('Profile menu closed');
         }
     };
 
     const toggleProfileMenu = () => {
-        console.log('Before toggle:', showProfileMenu);
         setShowProfileMenu(!showProfileMenu);
-        console.log('After toggle:', showProfileMenu);
+    };
+
+    const handleTabChange = (tab) => {
+        setActiveTab(tab);
     };
 
     return (
@@ -72,6 +76,7 @@ const Manager = () => {
                             <div className="profile-links">
                                 <Link to="/manager">Manager</Link>
                                 <Link to="/profile">Profile</Link>
+                                <Link to="/cart">Cart</Link>
                                 <Link to="/orders">Orders</Link>
                                 <Link to="/settings">Settings</Link>
                             </div>
@@ -79,9 +84,17 @@ const Manager = () => {
                     </div>
                 </div>
             </header>
-            <h1 className="restaurantslist">Orders</h1>
-            <OrderCardList orders={filteredOrders} />
-        </main>
+            <div className="tabs">
+                <button onClick={() => handleTabChange('orders')}>Orders</button>
+                <button onClick={() => handleTabChange('completedOrders')}>Completed Orders</button>
+                <button onClick={() => handleTabChange('statistics')}>Statistics</button>
+            </div>
+            <div className="tab-content">
+                {activeTab === 'orders' && <OrdersTab orders={filteredOrders} />}
+                {activeTab === 'completedOrders' && <CompletedOrdersTab />}
+                {activeTab === 'statistics' && <StatisticsTab />}
+            </div>
+            </main>
     );
 }
 
