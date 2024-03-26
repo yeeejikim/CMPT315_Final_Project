@@ -1,0 +1,19 @@
+.card-container {
+    flex: 0 0 30%; 
+    background-color: #95dada;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 16px;
+    cursor: pointer;
+    text-align: center; 
+}
+
+.card-container:hover {
+    transform: scale(1.05);
+}
+
+.card-link {
+    text-decoration: none; /* Remove underline */
+    color: black; /* Change color */
+}

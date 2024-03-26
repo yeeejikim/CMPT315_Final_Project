@@ -1,0 +1,22 @@
+.cardlist {
+    width: 50%; 
+    margin: 0; 
+    padding: 0; 
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: flex-start; 
+}
+
+@media only screen and (max-width: 815px) {
+    .cardlist {
+        width: 85vw;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
+    }
+}
+
+h2{
+    text-align: center;
+}
