@@ -16,11 +16,11 @@ const Manager = () => {
     const [filteredOrders, setFilteredOrders] = useState([]);
     const [managerRestaurantId, setManagerRestaurantId] = useState(null);
     const [showProfileMenu, setShowProfileMenu] = useState(false);
-    const managerId = 1; // Fetch later
+    const managerId = useParams();
 
     useEffect(() => {
         const fetchManagerData = async () => {
-            const managerResponse = await axios.get(`/managers/${managerId}`);
+            const managerResponse = await axios.get(`/managers/${parseInt(managerId['managerId'])}`);
             const managerData = managerResponse.data;
             setManagerRestaurantId(managerData.restaurant);
         };
