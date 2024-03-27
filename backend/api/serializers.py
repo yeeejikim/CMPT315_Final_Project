@@ -11,12 +11,6 @@ class MenuItemSerializer(serializers.ModelSerializer):
         model = MenuItems
         fields = ('item_id', 'item_name', 'item_price', 'item_desc', 'item_availability', 'item_image', 'restaurant')
 
-class RestaurantSerializer(serializers.ModelSerializer):
-    menu_restaurant = MenuItemSerializer(many = True, read_only = True)
-    class Meta:
-        model = Restaurants
-        fields = ('rest_id', 'rest_name', 'rest_phone', 'rest_address', 'rest_open', 'rest_close', 'rest_image', 'menu_restaurant')
-
 class ManagerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Managers
@@ -27,3 +21,10 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Orders
         fields = ('order_id', 'order_time', 'order_status', 'order_instruction', 'order_pickup', 'customer', 'restaurant', 'menuItems')
+
+class RestaurantSerializer(serializers.ModelSerializer):
+    menu_restaurant = MenuItemSerializer(many = True, read_only = True)
+    order_restaurant = OrderSerializer(many = True, read_only = True)
+    class Meta:
+        model = Restaurants
+        fields = ('rest_id', 'rest_name', 'rest_phone', 'rest_address', 'rest_open', 'rest_close', 'rest_image', 'menu_restaurant', 'order_restaurant')
