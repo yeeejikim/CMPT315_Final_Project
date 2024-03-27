@@ -19,7 +19,6 @@ class CustomerView(viewsets.ModelViewSet):
     queryset = Customers.objects.all()
 
 class RestaurantsView(viewsets.ModelViewSet):
-class RestaurantsView(viewsets.ModelViewSet):
     serializer_class = RestaurantSerializer
     queryset = Restaurants.objects.all()
 
