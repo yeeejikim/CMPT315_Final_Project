@@ -1,8 +1,5 @@
 import React, { useState, useEffect, Component } from "react"
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import Table from 'react-bootstrap/Table'
-import Button from "react-bootstrap/Button";
 import "./Restaurants.css";
 import { CardList } from "../components/cardlist/restcardlist.component";
 import { SearchBar } from '../searchbar/searchbar.component';
@@ -13,7 +10,7 @@ const Restaurants = ({}) => {
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [showProfileMenu, setShowProfileMenu] = useState(false);
 
-
+    // Get the restaurants and handle click locations
     useEffect(() => {
         const fetchRestaurants = async () => {
             const response = await axios.get("/restaurants");
@@ -28,6 +25,7 @@ const Restaurants = ({}) => {
         };
     }, []);
 
+    // Check if the click is not on the profile menu
     const handleClickOutside = (event) => {
         const profileMenu = document.querySelector(".profile-button");
         if (profileMenu && !profileMenu.contains(event.target)) {
@@ -35,6 +33,7 @@ const Restaurants = ({}) => {
         }
     };
 
+    // Check the values of the search bar and search for restaurants
     const handleInput = (e) => {
         const searchTerm = e.target.value.toLowerCase();
         const filtered = restaurants.filter(restaurant =>
@@ -43,8 +42,8 @@ const Restaurants = ({}) => {
         setFilteredRestaurants(filtered);
     };
 
+    // Show the profile menu
     const toggleProfileMenu = () => {
-
         setShowProfileMenu(!showProfileMenu);
     };
 

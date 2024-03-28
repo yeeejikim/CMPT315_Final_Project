@@ -18,7 +18,7 @@ const App = () => {
     }
   }, []);
 
-  // Function for adding items to cart (replace with your logic)
+  // Function for adding items to cart
   const handleAddToCart = (item) => {
     const existingCart = [...cartItems];
     const existingItemIndex = existingCart.findIndex((cartItem) => cartItem.id === item.id);

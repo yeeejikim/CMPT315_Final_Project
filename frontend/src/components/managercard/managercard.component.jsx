@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import React, { useState, useEffect, Component } from "react"
 import axios from 'axios';
 
+// Create manager card
 export const ManagerCard = ({ manager }) => {
     const { manager_id, restaurant} = manager;
     const [restaurants, setRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     
+    // Get the name of the restaurant to display
     useEffect(() => {
         const fetchRestaurants = async () => {
             const response = await axios.get(`/restaurants/${restaurant}`);
