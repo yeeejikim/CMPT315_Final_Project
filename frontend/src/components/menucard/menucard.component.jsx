@@ -2,22 +2,26 @@ import React from "react";
 import './menucard.styles.css'
 import { useState, useEffect, Component } from "react"
 
+// Create menu item cards
 export const Card = ({ item }) => {
     const { item_id, item_name, item_price, item_image } = item;
     const [quantity, setQuantity] = useState(1); // State to track quantity
 
+    // Quantity amount of menu item
     const handleQuantityChange = (event) => {
         // Ensure only positive integers are allowed
         const newQuantity = parseInt(event.target.value.replace(/\D/, '')) || 1;
         setQuantity(newQuantity);
     };
 
+    // Decrease quantity
     const decreaseQuantity = () => {
         if (quantity > 1) {
             setQuantity(quantity - 1);
         }
     };
 
+    // Increase quantity
     const increaseQuantity = () => {
         setQuantity(quantity + 1);
     };
@@ -31,7 +35,6 @@ export const Card = ({ item }) => {
         console.log('Item added'); 
       };
 
-    // Change src later
     return (
         <div className='menu-card-container'>
             <h2>{item_name}</h2>

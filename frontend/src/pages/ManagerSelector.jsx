@@ -1,8 +1,5 @@
 import React, { useState, useEffect, Component } from "react"
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import Table from 'react-bootstrap/Table'
-import Button from "react-bootstrap/Button";
 import "./ManagerSelector.css";
 import { ManagerCardList } from "../components/managercardlist/managercardlist.component";
 import { Link } from 'react-router-dom';
@@ -11,6 +8,7 @@ const ManagerSelector = ({ }) => {
     const [manager, setManagers] = useState([]);
     const [showProfileMenu, setShowProfileMenu] = useState(false);
 
+    // Get all managers and handle click locations
     useEffect(() => {
         const fetchManagers = async () => {
             const response = await axios.get("/managers");
@@ -24,6 +22,7 @@ const ManagerSelector = ({ }) => {
         };
     }, []);
 
+    // Check if the click is not on the profile menu
     const handleClickOutside = (event) => {
         const profileMenu = document.querySelector(".profile-button");
         if (profileMenu && !profileMenu.contains(event.target)) {
@@ -31,8 +30,8 @@ const ManagerSelector = ({ }) => {
         }
     };
 
+    // Show profile menu
     const toggleProfileMenu = () => {
-
         setShowProfileMenu(!showProfileMenu);
     };
 

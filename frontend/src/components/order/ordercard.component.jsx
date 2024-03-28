@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useState } from "react";
 import axios from "axios";
 
+// Create order cards
 export const OrderCard = ({ order }) => {
     const { order_id, order_time, order_status, order_instruction, order_pickup, customer } = order;
 
@@ -11,8 +12,16 @@ export const OrderCard = ({ order }) => {
     const [pickupTime, setPickupTime] = useState(order_pickup);
     const statusOptions = ["Order placed", "Order in progress", "Ready for pickup", "Order completed"];
 
+    // Used to get information about the order i.e. order status and order pickup time
     const adjustOrder = async () => {
-        const response = axios.put("http://127.0.0.1:8000/order/1/update/", {
+        if (status === "Order completed") {
+            const confirmed = window.confirm("Are you sure you want to mark this order as completed?");
+            if (!confirmed) {
+                return; // If not confirmed, do nothing
+            }
+        }
+        
+        const response = axios.put(`http://127.0.0.1:8000/order/${order_id}/update/`, {
             "order_status": status,
             "order_pickup": pickupTime
         })
