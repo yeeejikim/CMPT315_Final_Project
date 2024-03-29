@@ -9,6 +9,62 @@
     text-align: center; 
 }
 
-.menu-card-container:hover {
-    transform: scale(1.05);
+.menu-card-container input,
+.menu-card-container button {
+    margin: 5px;
+    padding: 8px 16px;
+}
+
+.delete-button{
+    background-color: red;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.static-button{
+    background-color: rgb(0, 102, 255);
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.save-button{
+    background-color: green;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+.menu-card-container .save-button:hover {
+    background-color: rgb(0, 109, 0);
+}
+
+.menu-card-container .delete-button:hover {
+    background-color: rgb(197, 0, 0);
+}
+
+.menu-card-container .static-button:hover {
+    background-color: rgb(0, 80, 199);
+}
+
+.menu-card-container img {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
