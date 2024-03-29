@@ -71,7 +71,7 @@ const MenuItemsTab = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("/menus/", { ...newItem, restaurantId: managerRestaurantId });
+            const response = await axios.post("/menus/", { ...newItem, restaurant: managerRestaurantId });
             // Add the new item 
             setMenuItems([...menuItems, response.data]);
             setFilteredItems([...menuItems, response.data]);
