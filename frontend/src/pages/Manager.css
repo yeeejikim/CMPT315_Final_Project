@@ -52,3 +52,11 @@
     background-color: #f0f0f0;
     border-bottom: 1px solid #f0f0f0;
   }
+
+.create-item-button{
+    margin-left: 10px; /* Adjust margin-left */
+}
+
+.submit-button{
+    margin-top: 10px;
+}
