@@ -36,6 +36,6 @@ class RestaurantSerializer(serializers.ModelSerializer):
     review_restaurant = ReviewSerializer(many = True, read_only = True)
     class Meta:
         model = Restaurants
-        fields = ('rest_id', 'rest_name', 'rest_phone', 'rest_address', 'rest_open', 'rest_close', 'rest_image', 'menu_restaurant', 'order_restaurant')
+        fields = ('rest_id', 'rest_name', 'rest_phone', 'rest_address', 'rest_open', 'rest_close', 'rest_image', 'menu_restaurant', 'order_restaurant', 'review_restaurant')
 
 
