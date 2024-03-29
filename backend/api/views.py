@@ -9,8 +9,8 @@ from rest_framework.response import Response
 from rest_framework.mixins import UpdateModelMixin, CreateModelMixin
 from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404, get_list_or_404
-from .serializers import CustomerSerializer, RestaurantSerializer, MenuItemSerializer, OrderSerializer, ManagerSerializer
-from .models import Customers, Restaurants, MenuItems, Orders, Managers
+from .serializers import CustomerSerializer, RestaurantSerializer, MenuItemSerializer, OrderSerializer, ManagerSerializer, ReviewSerializer
+from .models import Customers, Restaurants, MenuItems, Orders, Managers, Reviews
 from django.http import JsonResponse
 # Create your views here.
 
@@ -34,6 +34,9 @@ class ManagerView(viewsets.ModelViewSet):
     serializer_class = ManagerSerializer
     queryset = Managers.objects.all()
 
+class ReviewView(viewsets.ModelViewSet):
+    serializer_class = ReviewSerializer
+    queryset = Reviews.objects.all()
 
 # generic views
 class RestaurantListAPIView(generics.ListAPIView):
