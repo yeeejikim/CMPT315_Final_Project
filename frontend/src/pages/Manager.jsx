@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import OrdersTab from "../components/tabs/OrdersTab";
 import CompletedOrdersTab from "../components/tabs/CompletedOrdersTab";
 import StatisticsTab from "../components/tabs/StatisticsTab";
+import MenuItemsTab from "../components/tabs/MenuItemsTab";
 
 const Manager = () => {
     const [activeTab, setActiveTab] = useState('orders');
@@ -60,11 +61,13 @@ const Manager = () => {
                 <button className={`tab-button ${activeTab === 'orders' ? 'active' : ''}`} onClick={() => handleTabChange('orders')}>Orders</button>
                 <button className={`tab-button ${activeTab === 'completedOrders' ? 'active' : ''}`} onClick={() => handleTabChange('completedOrders')}>Completed Orders</button>
                 <button className={`tab-button ${activeTab === 'statistics' ? 'active' : ''}`} onClick={() => handleTabChange('statistics')}>Statistics</button>
+                <button className={`tab-button ${activeTab === 'menuItems' ? 'active' : ''}`} onClick={() => handleTabChange('menuItems')}>Menu Items</button>
             </div>
             <div className="tab-content">
                 {activeTab === 'orders' && <OrdersTab />}
                 {activeTab === 'completedOrders' && <CompletedOrdersTab />}
                 {activeTab === 'statistics' && <StatisticsTab />}
+                {activeTab === 'menuItems' && <MenuItemsTab/>}
             </div>
             </main>
     );
