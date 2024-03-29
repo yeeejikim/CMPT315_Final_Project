@@ -26,6 +26,7 @@ router.register(r'restaurants', views.RestaurantsView, 'Restaurants')
 router.register(r'menus', views.MenuItemView, 'MenuItems')
 router.register(r'orders', views.OrderView, 'Orders')
 router.register(r'managers', views.ManagerView, 'Managers')
+router.register(r'reviews', views.ReviewView, 'Reviews')
 # router.register(r'restaurant/(?P<pk>[^/.]+)', views.RestaurantView, 'Restaurant')
 
 

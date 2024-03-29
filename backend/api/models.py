@@ -53,3 +53,9 @@ class Orders(models.Model):
     customer = models.ForeignKey(Customers, related_name = 'order_customer', on_delete = models.CASCADE)
     restaurant = models.ForeignKey(Restaurants, related_name = 'order_restaurant', on_delete = models.CASCADE)
     menuItems = models.ManyToManyField(MenuItems, related_name='menu', blank=False)
+    has_review = models.BooleanField(default = False)
+
+class Reviews(models.Model):
+    review_id = models.AutoField(primary_key = True)
+    customer = models.ForeignKey(Customers, related_name = 'review_customer', on_delete = models.CASCADE)
+    restaurant = models.ForeignKey(Restaurants, related_name = 'review_restaurant', on_delete = models.CASCADE)
