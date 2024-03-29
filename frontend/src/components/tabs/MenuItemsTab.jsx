@@ -42,41 +42,40 @@ const MenuItemsTab = () => {
                 }
             };
             fetchMenus();
+
+            const interval = setInterval(fetchMenus, 1000);
+            return () => clearInterval(interval);
         }
     }, [managerRestaurantId]);
 
-    // Handler to toggle the modal
+    // Toggle the modal
     const toggleModal = () => {
         setShowModal(!showModal);
     };
 
-    // Handler to update new item state
+    // Update new items
     const handleChange = (e) => {
         const { name, value } = e.target;
-        // Validate item availability
+        // Check if avaiability is an integer
         if (name === 'itemAvailability' && parseInt(value) < 0) {
-            return; // Prevent setting negative availability
+            return;
         }
-        // Validate item price
+        // Check if iftem price is an float
         if (name === 'itemPrice' && parseFloat(value) < 0) {
-            return; // Prevent setting negative price
+            return;
         }
         setNewItem({ ...newItem, [name]: name === 'itemAvailability' ? parseInt(value) : value });
     };
 
-    // Handler to submit new menu item
+    // Submit new menu item
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Make API call to create new menu item
-            const response = await axios.post("/menus/", {
-                ...newItem,
-                restaurantId: managerRestaurantId
-            });
-            // Add the new item to the menuItems state
+            const response = await axios.post("/menus/", { ...newItem, restaurant: managerRestaurantId });
+            // Add the new item 
             setMenuItems([...menuItems, response.data]);
             setFilteredItems([...menuItems, response.data]);
-            // Reset the new item state
+            // Reset the text and number fields
             setNewItem({
                 itemName: "",
                 itemPrice: 0.00,
@@ -84,7 +83,6 @@ const MenuItemsTab = () => {
                 itemAvailability: 0,
                 itemImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png"
             });
-            // Close the modal
             setShowModal(false);
         } catch (error) {
             console.error('Error creating new menu item:', error);
@@ -96,8 +94,6 @@ const MenuItemsTab = () => {
             <h2>Menu Items</h2>
             <Button className="create-item-button" onClick={toggleModal}>Create New Menu Item</Button>
             <ManagerItemCardList menuItems={filteredItems} />
-
-            {/* Modal for creating new menu item */}
             <Modal show={showModal} onHide={toggleModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>Create New Menu Item</Modal.Title>
