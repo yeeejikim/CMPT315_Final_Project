@@ -5,7 +5,7 @@ import { useState } from "react";
 import axios from "axios";
 
 // Create order cards
-export const OrderCard = ({ order }) => {
+export const OrderCard = ({ order, fetchUpdatedOrders }) => {
     const { order_id, order_time, order_status, order_instruction, order_pickup, customer } = order;
 
     const [status, setStatus] = useState(order_status);
@@ -20,13 +20,16 @@ export const OrderCard = ({ order }) => {
                 return; // If not confirmed, do nothing
             }
         }
-        
-        const response = axios.put(`http://127.0.0.1:8000/order/${order_id}/update/`, {
-            "order_status": status,
-            "order_pickup": pickupTime
-        })
-            .then((response) => { console.log(response.data) })
-            .catch((error) => { console.error(error.toJSON()) })
+
+        try {
+            await axios.put(`http://127.0.0.1:8000/order/${order_id}/update/`, {
+                "order_status": status,
+                "order_pickup": pickupTime
+            });
+            fetchUpdatedOrders();
+        } catch (error) {
+            console.error("Error updating order:", error)
+        }
     };
 
     return (

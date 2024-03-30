@@ -7,6 +7,7 @@ import Header from './header-component/Header.jsx';
 import Cart from './components/Cart/Cart.jsx';
 import CartItem from './components/Cart/CartItem.jsx';
 import ManagerSelector from './pages/ManagerSelector.jsx';
+import Orders from './pages/Orders.jsx';
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -37,9 +38,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Restaurants onAddTocart = {handleAddToCart} />} />
           <Route path="/menu/:restaurantId" element={<Menu onAddTocart = {handleAddToCart} />} />
-          //<Route path="/manager" element={<ManagerSelector />} />
+          <Route path="/manager" element={<ManagerSelector />} />
           <Route path="/manager/:managerId" element={<Manager />} />
           <Route path="/cart" element={<Cart cartItems={cartItems} />} />
+          <Route path="/orders" element={<Orders />} />
         </Routes>
 
       </div>
