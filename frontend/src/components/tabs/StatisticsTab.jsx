@@ -26,7 +26,7 @@ const StatisticsTab = () => {
         fetchManagerData();
     }, [managerId]);
 
-    // Get the orders from that restaurant
+    // Get the orders
     useEffect(() => {
         const fetchOrders = async () => {
             try {
@@ -47,7 +47,7 @@ const StatisticsTab = () => {
         }
     }, [orders, managerRestaurantId]);
 
-    // Get menu items from the backend
+    // Get menu items from the backend and create object for items
     useEffect(() => {
         const fetchMenuItems = async () => {
             try {
@@ -103,6 +103,7 @@ const StatisticsTab = () => {
         }
     }, [filteredOrders]);
 
+    // Convert the hour to 12 hour format
     function convertTo12HourFormat(hour) {
         if (hour === 0) {
             return "12 AM";
