@@ -68,3 +68,22 @@
 .submit-button {
     margin-top: 10px;
 }
+
+.statistics-container {
+    margin-left: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-items ul {
+    font-size: 16px; /* Adjust the font size for the menu item names */
+}
+
+.popular-hour p {
+    font-size: 20px; /* Adjust the font size for the most popular hour */
+}
+
+.popular-hour-text {
+    text-align: left;
+    margin-left: 10px;
+}

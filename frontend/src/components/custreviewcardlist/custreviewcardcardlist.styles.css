@@ -1,0 +1,26 @@
+.cardlist {
+    width: 50%; 
+    margin: 0; 
+    padding: 0; 
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: flex-start;
+}
+
+@media only screen and (max-width: 815px) {
+    .cardlist {
+        width: 100%; 
+    }
+
+    .order-card-container {
+        flex-basis: 100%; 
+    }
+}
+
+h2{
+    text-align: center;
+}
+
+p{
+    text-align: center;
+}
