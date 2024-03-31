@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 const StatisticsTab = () => {
     const [orders, setOrders] = useState([]);
     const [managerRestaurantId, setManagerRestaurantId] = useState(null);
+    const [filteredOrders, setFilteredOrders] = useState([]);
     const managerId = useParams();
     const [topItems, setTopItems] = useState([]);
     const [top5Hours, setTopHours] = useState([]);
@@ -38,6 +39,14 @@ const StatisticsTab = () => {
         fetchOrders();
     }, []);
 
+    // Filter orders to show only orders from the specific restaurant associated with the manager
+    useEffect(() => {
+        if (managerRestaurantId !== null) {
+            const filtered = orders.filter(order => order.restaurant === managerRestaurantId);
+            setFilteredOrders(filtered);
+        }
+    }, [orders, managerRestaurantId]);
+
     // Get menu items from the backend
     useEffect(() => {
         const fetchMenuItems = async () => {
@@ -55,12 +64,12 @@ const StatisticsTab = () => {
         fetchMenuItems();
     }, []);
 
-    // Calculate statistics
+    // Calculate statistics specific to the selected restaurant
     useEffect(() => {
-        if (orders.length > 0) {
-            // Calculate item popularity
+        if (filteredOrders.length > 0) {
+            // Calculate item popularity for the selected restaurant
             const itemPopularity = {};
-            orders.forEach(order => {
+            filteredOrders.forEach(order => {
                 order.menuItems.forEach(item => {
                     if (itemPopularity[item]) {
                         itemPopularity[item] += 1;
@@ -71,13 +80,13 @@ const StatisticsTab = () => {
             });
             // Sort item popularity
             const sortedItems = Object.keys(itemPopularity).sort((a, b) => itemPopularity[b] - itemPopularity[a]);
-            // Get top 10 most popular items
+            // Get top 10 most popular items for the selected restaurant
             const top10Items = sortedItems.slice(0, 10).map(itemId => menuItems[itemId]);
             setTopItems(top10Items);
 
-            // Calculate hour popularity
+            // Calculate hour popularity for the selected restaurant
             const hourPopularity = {};
-            orders.forEach(order => {
+            filteredOrders.forEach(order => {
                 const orderTime = new Date(order.order_time);
                 const hour = orderTime.getHours();
                 if (hourPopularity[hour]) {
@@ -88,11 +97,11 @@ const StatisticsTab = () => {
             });
             // Sort hour popularity
             const sortedHours = Object.keys(hourPopularity).sort((a, b) => hourPopularity[b] - hourPopularity[a]);
-            // Get top 5 most popular hours
+            // Get top 5 most popular hours for the selected restaurant
             const top5Hours = sortedHours.slice(0, 5);
             setTopHours(top5Hours);
         }
-    }, [orders]);
+    }, [filteredOrders]);
 
     function convertTo12HourFormat(hour) {
         if (hour === 0) {
