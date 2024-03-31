@@ -29,11 +29,11 @@ const OrdersTab = () => {
             setOrders(response.data);
         };
         fetchOrders();
-        // Set up interval to fetch orders every 5 seconds
-        const interval = setInterval(fetchOrders, 1000);
+        // Set up interval to fetch orders every 1 seconds
+        //const interval = setInterval(fetchOrders, 1000);
 
         // Clean up interval on component unmount
-        return () => clearInterval(interval);
+        //return () => clearInterval(interval);
     }, []);
 
     // Filter orders to show only orders that are not complete
@@ -44,10 +44,20 @@ const OrdersTab = () => {
         }
     }, [orders, managerRestaurantId]);
 
+    // Function to fetch orders again after adjustment
+    const fetchUpdatedOrders = async () => {
+        try {
+            const response = await axios.get("/orders");
+            setOrders(response.data);
+        } catch (error) {
+            console.error('Error fetching updated orders:', error);
+        }
+    };
+
     return (
         <div>
             <h2>Orders</h2>
-            <OrderCardList orders={filteredOrders} />
+            <OrderCardList orders={filteredOrders} fetchUpdatedOrders={fetchUpdatedOrders} />
         </div>
     );
 }

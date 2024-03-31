@@ -3,7 +3,6 @@
     top: 0;
     right: 0;
     width: 200px;
-    /* Adjust width as needed */
     height: 100vh;
     background-color: white;
     transition: transform 0.3s ease-out;
@@ -39,7 +38,6 @@
 .tab-button.active {
     background-color: white;
     border-bottom: 1px solid #f0f0f0;
-    /* Keep border color consistent with the active tab */
 }
 
 .tab-button {
@@ -49,7 +47,6 @@
     border: 1px solid #000000;
     border-bottom: none;
     background-color: #f0f0f0;
-    /* Set background color for inactive tabs */
     font-size: 16px;
     color: #333;
     transition: background-color 0.3s;
@@ -57,14 +54,25 @@
 
 .tab-button:hover {
     background-color: #e0e0e0;
-    /* Lighten the background color on hover */
 }
 
 .create-item-button {
     margin-left: 10px;
-    /* Adjust margin-left */
 }
 
 .submit-button {
     margin-top: 10px;
+}
+
+.cust-orders-tab {
+    margin-left: 20px;
+}
+
+.dropdown-container {
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.dropdown {
+    width: 200px;
 }

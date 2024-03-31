@@ -11,7 +11,7 @@ class CustomerSerializer(serializers.ModelSerializer):
     review_customer = ReviewSerializer(many = True, read_only = True)
     class Meta:
         model = Customers
-        fields = ('cust_id', 'cust_pass', 'cust_name', 'cust_email', 'cust_phone')
+        fields = ('cust_id', 'cust_pass', 'cust_name', 'cust_email', 'cust_phone', 'review_customer')
 
 class MenuItemSerializer(serializers.ModelSerializer):
     class Meta:
