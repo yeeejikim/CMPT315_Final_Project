@@ -1,10 +1,11 @@
-import React, { useState, useEffect, Component } from "react"
+import React, { useState, useEffect } from "react"
 import "./Manager.css";
 import { Link } from 'react-router-dom';
 import OrdersTab from "../components/tabs/OrdersTab";
 import CompletedOrdersTab from "../components/tabs/CompletedOrdersTab";
 import StatisticsTab from "../components/tabs/StatisticsTab";
 import MenuItemsTab from "../components/tabs/MenuItemsTab";
+import ReviewsTab from "../components/tabs/ReviewsTab";
 
 const Manager = () => {
     const [activeTab, setActiveTab] = useState('orders');
@@ -60,14 +61,16 @@ const Manager = () => {
             <div className="tabs">
                 <button className={`tab-button ${activeTab === 'orders' ? 'active' : ''}`} onClick={() => handleTabChange('orders')}>Orders</button>
                 <button className={`tab-button ${activeTab === 'completedOrders' ? 'active' : ''}`} onClick={() => handleTabChange('completedOrders')}>Completed Orders</button>
-                <button className={`tab-button ${activeTab === 'statistics' ? 'active' : ''}`} onClick={() => handleTabChange('statistics')}>Statistics</button>
                 <button className={`tab-button ${activeTab === 'menuItems' ? 'active' : ''}`} onClick={() => handleTabChange('menuItems')}>Menu Items</button>
+                <button className={`tab-button ${activeTab === 'reviews' ? 'active' : ''}`} onClick={() => handleTabChange('reviews')}>Reviews</button>
+                <button className={`tab-button ${activeTab === 'statistics' ? 'active' : ''}`} onClick={() => handleTabChange('statistics')}>Statistics</button>
             </div>
             <div className="tab-content">
                 {activeTab === 'orders' && <OrdersTab />}
                 {activeTab === 'completedOrders' && <CompletedOrdersTab />}
-                {activeTab === 'statistics' && <StatisticsTab />}
                 {activeTab === 'menuItems' && <MenuItemsTab/>}
+                {activeTab === 'reviews' && <ReviewsTab/>}
+                {activeTab === 'statistics' && <StatisticsTab />}
             </div>
             </main>
     );

@@ -1,10 +1,7 @@
-import React, { useState, useEffect, Component } from "react"
+import React, { useState, useEffect} from "react"
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import Table from 'react-bootstrap/Table'
-import Button from "react-bootstrap/Button";
 import { OrderCardList } from "../ordercardlist/ordercardlist.component";
-import { Link } from 'react-router-dom';
 
 const OrdersTab = () => {
     const [orders, setOrders] = useState([]);
@@ -29,11 +26,6 @@ const OrdersTab = () => {
             setOrders(response.data);
         };
         fetchOrders();
-        // Set up interval to fetch orders every 1 seconds
-        //const interval = setInterval(fetchOrders, 1000);
-
-        // Clean up interval on component unmount
-        //return () => clearInterval(interval);
     }, []);
 
     // Filter orders to show only orders that are not complete

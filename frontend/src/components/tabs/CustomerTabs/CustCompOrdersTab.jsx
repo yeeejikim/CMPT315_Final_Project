@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import { CompOrderCardList } from "../../comporderscardlist/compordercardlist.component.jsx";
+import { CustReviewCardList } from "../../custreviewcardlist/custreviewcardcardlist.component";
 
 const CustOrdersTab = () => {
     const [orders, setOrders] = useState([]);
@@ -55,7 +55,7 @@ const CustOrdersTab = () => {
                     ))}
                 </select>
             </div>
-            <CompOrderCardList orders={filteredOrders} />
+            <CustReviewCardList orders={filteredOrders} />
         </div>
     );
 }
