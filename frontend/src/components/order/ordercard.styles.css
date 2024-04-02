@@ -1,4 +1,4 @@
-.order-card-container {
+.orders-card-container {
     flex: 0 0 30%;
     background-color: #F0EFEB;
     border: 1px solid #D4D4D4;
@@ -11,7 +11,7 @@
 
 }
 
-.order-card-buttons {
+.orders-card-buttons {
     margin-top: 10px; 
     border-radius: 5px;
 }

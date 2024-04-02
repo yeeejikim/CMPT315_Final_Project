@@ -33,7 +33,7 @@ export const OrderCard = ({ order, fetchUpdatedOrders }) => {
     };
 
     return (
-        <div className='order-card-container'>
+        <div className='orders-card-container'>
             <div>
                 <h>Order Number: </h>
                 <span>{order_id}</span>

@@ -6,7 +6,7 @@ export const CompOrderCard = ({ order }) => {
     const { order_id, order_time, order_status, order_instruction, order_pickup, customer } = order;
 
     return (
-        <div className='order-card-container'>
+        <div className='comp-order-card-container'>
             <div>
                 <h>Order Number: </h>
                 <span>{order_id}</span>

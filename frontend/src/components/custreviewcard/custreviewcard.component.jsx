@@ -20,7 +20,7 @@ export const CustReviewCard = ({ order }) => {
     };
 
     return (
-        <div className='order-card-container'>
+        <div className='cust-review-card-container'>
             <div>
                 <h>Order Number: </h>
                 <span>{order_id}</span>

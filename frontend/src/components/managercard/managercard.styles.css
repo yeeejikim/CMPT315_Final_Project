@@ -1,6 +1,6 @@
-.card-container {
+.manager-card-container {
     flex: 0 0 30%; 
-    background-color: #95dada;
+    background-color: #F0EFEB;
     border: 1px solid grey;
     border-radius: 5px;
     margin: 10px;
@@ -9,7 +9,7 @@
     text-align: center; 
 }
 
-.card-container:hover {
+.manager-card-container:hover {
     transform: scale(1.05);
 }
 
