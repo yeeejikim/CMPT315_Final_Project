@@ -21,7 +21,7 @@ export const ManagerCard = ({ manager }) => {
 
     return (
         <Link to={`/manager/${manager_id}`} className='card-link'>
-            <div className='card-container'>
+            <div className='manager-card-container'>
                 <h1>Manager {manager_id}</h1>
                 <h2>{restaurants.rest_name}</h2>
             </div>
