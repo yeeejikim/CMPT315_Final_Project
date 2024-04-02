@@ -57,5 +57,7 @@ class Orders(models.Model):
 
 class Reviews(models.Model):
     review_id = models.AutoField(primary_key = True)
+    review_text = models.TextField(blank = True)
+    rating = models.BooleanField(default = True)
     customer = models.ForeignKey(Customers, related_name = 'review_customer', on_delete = models.CASCADE)
     restaurant = models.ForeignKey(Restaurants, related_name = 'review_restaurant', on_delete = models.CASCADE)

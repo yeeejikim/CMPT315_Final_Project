@@ -1,5 +1,6 @@
 .restaurantslist {
   text-align: center;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .profile-menu {
@@ -9,7 +10,7 @@
   width: 200px;
   /* Adjust width as needed */
   height: 100vh;
-  background-color: white;
+  background-color: #F0EFEB;
   transition: transform 0.3s ease-out;
   transform: translateX(100%);
   z-index: 9999;
@@ -22,6 +23,7 @@
 
 .profile-menu .profile-links {
   padding: 20px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .profile-menu .profile-links a {

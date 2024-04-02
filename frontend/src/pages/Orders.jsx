@@ -3,6 +3,8 @@ import "./Orders.css";
 import { Link } from 'react-router-dom';
 import CustOrdersTab from "../components/tabs/CustomerTabs/CustOrdersTab";
 import CustCompOrdersTab from "../components/tabs/CustomerTabs/CustCompOrdersTab";
+import logo from '../header-component/logo.png'
+import list from '../header-component/left-chevron.png'
 
 const Orders = () => {
     const [activeTab, setActiveTab] = useState('orders');
@@ -39,10 +41,12 @@ const Orders = () => {
             <header className="header">
                 <div className="header-container">
                     <div className="logo">
-                        <Link className='logotext' to="/">Logo</Link>
+                        <Link className='logotext' to="/">
+                            <img src={logo} width={70}/>
+                        </Link>
                     </div>
                     <div className="user-options">
-                        <button className='profile-button' onClick={toggleProfileMenu}>Profile</button>
+                        <img src = {list} width = {50} onClick={toggleProfileMenu} />
                         <div className={`profile-menu ${showProfileMenu ? 'show' : ''}`}>
                             <div className="profile-links">
                                 <Link to="/manager">Manager</Link>
