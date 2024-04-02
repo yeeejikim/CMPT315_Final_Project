@@ -38,7 +38,7 @@ export const Card = ({ item }) => {
     return (
         <div className='menu-card-container'>
             <h2>{item_name}</h2>
-            <img alt='menu' src={item_image} width={100}></img>
+            <img alt='menu' src={item_image} width={200}></img>
             <h6>$ {item_price}</h6>
             <div className="quantity-controls">
                 <button onClick={decreaseQuantity}>-</button>

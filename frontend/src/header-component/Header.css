@@ -1,5 +1,5 @@
 .header {
-    background-color: #76c893;
+    background-color: #F0EFEB;
     border-bottom: 1px solid #e6e6e6;
     padding: 10px 20px;
 }
@@ -16,6 +16,10 @@
 
 .logotext {
     color: black;
+}
+
+.logoimage{
+    width: 200;
 }
 
 .user-options {

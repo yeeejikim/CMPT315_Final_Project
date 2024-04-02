@@ -5,6 +5,8 @@ import "./Menus.css";
 import { MenuCardList } from '../components/menucardlist/menucardlist.component';
 import { SearchBar } from '../searchbar/searchbar.component';
 import { Link } from 'react-router-dom';
+import logo from '../header-component/logo.png'
+import list from '../header-component/left-chevron.png'
 
 function Menu() {
     const { restaurantId } = useParams();
@@ -55,14 +57,16 @@ function Menu() {
             <header className="header">
                 <div className="header-container">
                     <div className="logo">
-                        <Link className='logotext' to="/">Logo</Link>
+                    <Link className="logoimage" to="/">
+                            <img src={logo} width={70}/>
+                        </Link>
                     </div>
                     <SearchBar
                         placeholder='Search Menu'
                         handleInput={handleInput}
                     />
                     <div className="user-options">
-                        <button className='profile-button' onClick={toggleProfileMenu}>Profile</button>
+                        <img src = {list} width = {50} onClick={toggleProfileMenu} />
                         <div className={`profile-menu ${showProfileMenu ? 'show' : ''}`}>
                             <div className="profile-links">
                                 <Link to="/manager">Manager</Link>
