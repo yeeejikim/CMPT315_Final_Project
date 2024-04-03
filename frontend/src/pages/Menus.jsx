@@ -7,12 +7,15 @@ import { SearchBar } from '../searchbar/searchbar.component';
 import { Link } from 'react-router-dom';
 import logo from '../header-component/logo.png'
 import list from '../header-component/left-chevron.png'
+import MenuTab from "../components/tabs/MenuTab";
+import CartTab from "../components/tabs/CartTab";
 
 function Menu() {
     const { restaurantId } = useParams();
     const [menuItems, setMenuItems] = useState([]);
     const [filteredItems, setFilteredItems] = useState(menuItems);
     const [showProfileMenu, setShowProfileMenu] = useState(false);
+    const [activeTab, setActiveTab] = useState('menu');
 
     // Get the restaurants menu items and handle click locations
     useEffect(() => {
@@ -28,7 +31,7 @@ function Menu() {
         return () => {
             document.removeEventListener("click", handleClickOutside);
         };
-    }, []);
+    }, [restaurantId]);
 
     // Check if the click is not on the profile menu
     const handleClickOutside = (event) => {
@@ -52,13 +55,18 @@ function Menu() {
         setShowProfileMenu(!showProfileMenu);
     };
 
+    // Tab changes
+    const handleTabChange = (tab) => {
+        setActiveTab(tab);
+    };
+
     return (
         <main className="content">
             <header className="header">
                 <div className="header-container">
                     <div className="logo">
-                    <Link className="logoimage" to="/">
-                            <img src={logo} width={70}/>
+                        <Link className="logoimage" to="/">
+                            <img src={logo} width={70} />
                         </Link>
                     </div>
                     <SearchBar
@@ -66,7 +74,7 @@ function Menu() {
                         handleInput={handleInput}
                     />
                     <div className="user-options">
-                        <img src = {list} width = {50} onClick={toggleProfileMenu} />
+                        <img src={list} width={50} onClick={toggleProfileMenu} />
                         <div className={`profile-menu ${showProfileMenu ? 'show' : ''}`}>
                             <div className="profile-links">
                                 <Link to="/manager">Manager</Link>
@@ -79,8 +87,14 @@ function Menu() {
                     </div>
                 </div>
             </header>
-            <h1 className="menuslist">Menu</h1>
-            <MenuCardList menuItems={filteredItems} />
+            <div className="tabs">
+                <button className={`tab-button ${activeTab === 'menu' ? 'active' : ''}`} onClick={() => handleTabChange('menu')}>Menu</button>
+                <button className={`tab-button ${activeTab === 'cart' ? 'active' : ''}`} onClick={() => handleTabChange('cart')}>Cart</button>
+            </div>
+            <div className="tab-content">
+                {activeTab === 'menu' && menuItems.length > 0 && <MenuTab menuItems={filteredItems} />}
+                {activeTab === 'cart' && <CartTab />}
+            </div>
         </main>
     );
 }
