@@ -5,6 +5,8 @@
     display: flex;
     flex-wrap: wrap; 
     justify-content: flex-start;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
 }
 
 @media only screen and (max-width: 815px) {

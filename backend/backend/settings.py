@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': '315_project_db',
         'USER': 'root',
-        'PASSWORD': 'Swords123',
+        'PASSWORD': 'flfldi1212!',
         'HOST': 'localhost',
         'Port': '8000',
     }
@@ -113,7 +113,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Canada/Mountain'
+
+DATETIME_FORMAT = "%Y-%b-%d %H:%M:%S"
+
+USE_L10N = False
 
 USE_I18N = True
 

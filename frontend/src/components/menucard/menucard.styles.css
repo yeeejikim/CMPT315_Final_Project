@@ -1,5 +1,5 @@
 .menu-card-container {
-    flex: auto; 
+    /* flex: auto;  */
     width: 300;
     background-color: #F0EFEB;
     border: 1px solid #D4D4D4;
@@ -45,8 +45,8 @@
 }
 
 .cartbutton {
-    width: 100px;
-    height: 30px;
+    /* width: 100px; */
+    /* height: 30px; */
     border: none; 
     border-radius: 5px; 
     background-color: green;

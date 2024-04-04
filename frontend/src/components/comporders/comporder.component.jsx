@@ -24,11 +24,11 @@ export const CompOrderCard = ({ order }) => {
                 <span>{order_instruction}</span>
             </div>
             <div>
-                <h>Order Pickup Time: </h>
+                <h>Pickup Time: </h>
                 <span>{order_pickup}</span>
             </div>
             <div>
-                <h>Order Customer: </h>
+                <h>Customer ID: </h>
                 <span>{customer}</span>
             </div>
         </div>

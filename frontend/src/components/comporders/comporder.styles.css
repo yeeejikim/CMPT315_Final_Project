@@ -1,10 +1,14 @@
 .comp-order-card-container {
-    flex: 0 0 30%;
+    /* flex: 0 0 30%; */
     background-color: #F0EFEB;
     border: 1px solid grey;
     border-radius: 5px;
     margin: 10px; 
     padding: 16px;
     cursor: pointer;
-    text-align: center; 
+    text-align: left; 
+}
+
+h{
+    font-weight: bold;
 }
