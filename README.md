@@ -7,6 +7,8 @@
 
 ### Activate backend
 #### Open a terminal and enter
+`In settings.py change password to SQL password and make sure SQL name is 315_project_db or name you chosen`
+
 `cd backend`
 
 `pip install -r requirements.txt`
