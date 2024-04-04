@@ -6,26 +6,11 @@ import CompletedOrdersTab from "../components/tabs/CompletedOrdersTab";
 import StatisticsTab from "../components/tabs/StatisticsTab";
 import MenuItemsTab from "../components/tabs/MenuItemsTab";
 import ReviewsTab from "../components/tabs/ReviewsTab";
+import logo from '../header-component/logo.png';
 
 const Manager = () => {
     const [activeTab, setActiveTab] = useState('orders');
     const [showProfileMenu, setShowProfileMenu] = useState(false);
-
-    // Document click locations
-    useEffect(() => {
-        document.addEventListener("click", handleClickOutside);
-        return () => {
-            document.removeEventListener("click", handleClickOutside);
-        };
-    }, []);
-
-    // Check if the click is not on the profile menu
-    const handleClickOutside = (event) => {
-        const profileMenu = document.querySelector(".profile-button");
-        if (profileMenu && !profileMenu.contains(event.target)) {
-            setShowProfileMenu(false);
-        }
-    };
 
     // Show profile menu
     const toggleProfileMenu = () => {
@@ -41,10 +26,8 @@ const Manager = () => {
         <main className="content">
             <header className="header">
                 <div className="header-container">
-                    <div className="logo">
-                        <Link className='logotext' to="/">Logo</Link>
-                    </div>
-                    <div className="user-options">
+                        <Link to="/manager" className="logotext">All Managers</Link>
+                    {/* <div className="user-options">
                         <button className='profile-button' onClick={toggleProfileMenu}>Profile</button>
                         <div className={`profile-menu ${showProfileMenu ? 'show' : ''}`}>
                             <div className="profile-links">
@@ -55,7 +38,7 @@ const Manager = () => {
                                 <Link to="/settings">Settings</Link>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </header>
             <div className="tabs">

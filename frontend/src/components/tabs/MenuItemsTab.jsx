@@ -10,12 +10,14 @@ const MenuItemsTab = () => {
     const [managerRestaurantId, setManagerRestaurantId] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [newItem, setNewItem] = useState({
-        itemName: "",
-        itemPrice: 0.00,
-        itemDescription: "",
-        itemAvailability: 0,
-        itemImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png"
+        item_name: "",
+        item_price: 0.00,
+        item_description: "",
+        item_availability: 0,
+        item_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png",
+        restaurant: managerRestaurantId
     });
+    
     const managerId = useParams();
 
     // Get the manager id and restaurant id
@@ -57,31 +59,32 @@ const MenuItemsTab = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         // Check if avaiability is an integer
-        if (name === 'itemAvailability' && parseInt(value) < 0) {
+        if (name === 'item_availability' && parseInt(value) < 0) {
             return;
         }
         // Check if iftem price is an float
-        if (name === 'itemPrice' && parseFloat(value) < 0) {
+        if (name === 'item_price' && parseFloat(value) < 0) {
             return;
         }
-        setNewItem({ ...newItem, [name]: name === 'itemAvailability' ? parseInt(value) : value });
+        setNewItem({ ...newItem, [name]: name === 'item_availability' ? parseInt(value) : value });
     };
 
     // Submit new menu item
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("/menus/", { ...newItem, restaurant: managerRestaurantId });
+            const response = await axios.post("/menus/", { ...newItem });
             // Add the new item 
             setMenuItems([...menuItems, response.data]);
             setFilteredItems([...menuItems, response.data]);
             // Reset the text and number fields
             setNewItem({
-                itemName: "",
-                itemPrice: 0.00,
-                itemDescription: "",
-                itemAvailability: 0,
-                itemImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png"
+                item_name: "",
+                item_price: 0.00,
+                item_description: "",
+                item_availability: 0,
+                item_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png",
+                restaurant: managerRestaurantId
             });
             setShowModal(false);
         } catch (error) {
@@ -102,23 +105,23 @@ const MenuItemsTab = () => {
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="itemName">
                             <Form.Label>Item Name</Form.Label>
-                            <Form.Control type="text" name="itemName" value={newItem.itemName} onChange={handleChange} />
+                            <Form.Control type="text" name="item_name" value={newItem.item_name} onChange={handleChange} />
                         </Form.Group>
                         <Form.Group controlId="itemPrice">
                             <Form.Label>Item Price</Form.Label>
-                            <Form.Control type="number" step="0.01" name="itemPrice" value={newItem.itemPrice} onChange={handleChange} />
+                            <Form.Control type="number" step="0.01" name="item_price" value={newItem.item_price} onChange={handleChange} />
                         </Form.Group>
                         <Form.Group controlId="itemDescription">
                             <Form.Label>Item Description</Form.Label>
-                            <Form.Control as="textarea" rows={3} name="itemDescription" value={newItem.itemDescription} onChange={handleChange} />
+                            <Form.Control as="textarea" rows={3} name="item_description" value={newItem.item_description} onChange={handleChange} />
                         </Form.Group>
                         <Form.Group controlId="itemAvailability">
                             <Form.Label>Item Availability</Form.Label>
-                            <Form.Control type="number" name="itemAvailability" value={newItem.itemAvailability} onChange={handleChange} />
+                            <Form.Control type="number" name="item_availability" value={newItem.item_availability} onChange={handleChange} />
                         </Form.Group>
                         <Form.Group controlId="itemImage">
                             <Form.Label>Item Image</Form.Label>
-                            <Form.Control type="text" name="itemImage" value={newItem.itemImage} onChange={handleChange} />
+                            <Form.Control type="text" name="item_image" value={newItem.item_image} onChange={handleChange} />
                         </Form.Group>
                         <Button className='submit-button' variant="primary" type="submit">Submit</Button>
                     </Form>

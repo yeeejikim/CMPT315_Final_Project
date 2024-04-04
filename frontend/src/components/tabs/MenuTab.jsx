@@ -28,7 +28,7 @@ const MenuTab = ({ menuItems }) => {
     return (
         <div>
             <h1 className="menuslist">Menu</h1>
-            <div className="dropdown-container">
+            {/* <div className="dropdown-container">
                 <select value={selectedCustomerId} onChange={handleCustomerChange} className="dropdown">
                     {customers.map(customer => (
                         <option key={customer.cust_id} value={customer.cust_id}>
@@ -36,7 +36,7 @@ const MenuTab = ({ menuItems }) => {
                         </option>
                     ))}
                 </select>
-            </div>
+            </div> */}
             <MenuCardList menuItems={menuItems} />
         </div>
     );

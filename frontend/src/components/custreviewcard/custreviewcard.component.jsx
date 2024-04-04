@@ -1,6 +1,7 @@
 import React from "react";
 import './custreviewcard.styles.css'
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 // Create order cards
 export const CustReviewCard = ({ order }) => {
@@ -8,15 +9,26 @@ export const CustReviewCard = ({ order }) => {
 
     const [showReviewButton, setShowReviewButton] = useState(true);
 
+    const [review, setReview] = useState({
+        "review_text": "good",
+        "rating": true,
+        "customer": 1,
+        "restaurant": 1
+    });
+
     useEffect(() => {
         if (has_review) {
             setShowReviewButton(false);
         }
     }, [has_review]);
 
-    const handleReviewClick = () => {
-        // Fill this review form and submit a review through a POST
-        console.log('Review button clicked');
+    const handleReviewClick = async () => {
+        try {
+            const response = await axios.post("/reviews/", { ...review });
+            has_review = true;
+        } catch (error) {
+            console.error('Error creating new menu item:', error);
+        }
     };
 
     return (

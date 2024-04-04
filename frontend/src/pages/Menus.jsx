@@ -11,6 +11,7 @@ import MenuTab from "../components/tabs/MenuTab";
 import CartTab from "../components/tabs/CartTab";
 
 function Menu() {
+
     const { restaurantId } = useParams();
     const [menuItems, setMenuItems] = useState([]);
     const [filteredItems, setFilteredItems] = useState(menuItems);
@@ -33,7 +34,13 @@ function Menu() {
         };
     }, [restaurantId]);
 
-    // Check if the click is not on the profile menu
+    useEffect(() => {
+        document.addEventListener("click", handleClickOutside);
+        return () => {
+          document.removeEventListener("click", handleClickOutside);
+        };
+      }, []);
+    
     const handleClickOutside = (event) => {
         const profileMenu = document.querySelector(".profile-button");
         if (profileMenu && !profileMenu.contains(event.target)) {
@@ -41,16 +48,6 @@ function Menu() {
         }
     };
 
-    // Check the values of the search bar and search in menu items
-    const handleInput = (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        const filtered = menuItems.filter(menu =>
-            menu && menu.item_name && menu.item_name.toLowerCase().includes(searchTerm)
-        );
-        setFilteredItems(filtered);
-    };
-
-    // Show profile menu
     const toggleProfileMenu = () => {
         setShowProfileMenu(!showProfileMenu);
     };
@@ -65,32 +62,28 @@ function Menu() {
             <header className="header">
                 <div className="header-container">
                     <div className="logo">
-                        <Link className="logoimage" to="/">
-                            <img src={logo} width={70} />
+                        <Link className='logotext' to="/restaurants">
+                            <img src={logo} width={70}/>
                         </Link>
                     </div>
-                    <SearchBar
-                        placeholder='Search Menu'
-                        handleInput={handleInput}
-                    />
                     <div className="user-options">
-                        <img src={list} width={50} onClick={toggleProfileMenu} />
+                        <img src = {list} className='profile-button' width = {50} onClick={toggleProfileMenu} />
                         <div className={`profile-menu ${showProfileMenu ? 'show' : ''}`}>
                             <div className="profile-links">
-                                <Link to="/manager">Manager</Link>
+                                {/* <Link to="/manager">Manager</Link> */}
                                 <Link to="/profile">Profile</Link>
                                 <Link to="/cart">Cart</Link>
                                 <Link to="/orders">Orders</Link>
-                                <Link to="/settings">Settings</Link>
+                                <Link to="/logout">Logout</Link>
                             </div>
                         </div>
                     </div>
                 </div>
             </header>
-            <div className="tabs">
+            {/* <div className="tabs">
                 <button className={`tab-button ${activeTab === 'menu' ? 'active' : ''}`} onClick={() => handleTabChange('menu')}>Menu</button>
                 <button className={`tab-button ${activeTab === 'cart' ? 'active' : ''}`} onClick={() => handleTabChange('cart')}>Cart</button>
-            </div>
+            </div> */}
             <div className="tab-content">
                 {activeTab === 'menu' && menuItems.length > 0 && <MenuTab menuItems={filteredItems} />}
                 {activeTab === 'cart' && <CartTab />}

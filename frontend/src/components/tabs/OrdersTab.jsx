@@ -4,6 +4,7 @@ import axios from 'axios';
 import { OrderCardList } from "../ordercardlist/ordercardlist.component";
 
 const OrdersTab = () => {
+    
     const [orders, setOrders] = useState([]);
     const [filteredOrders, setFilteredOrders] = useState([]);
     const [managerRestaurantId, setManagerRestaurantId] = useState(null);
@@ -17,7 +18,7 @@ const OrdersTab = () => {
             setManagerRestaurantId(managerData.restaurant);
         };
         fetchManagerData();
-    }, [managerId]);
+    }, []);
 
     // Get the orders from that restaurant
     useEffect(() => {
