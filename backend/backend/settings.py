@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'rest_framework',
     'corsheaders',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -82,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': '315_project_db',
         'USER': 'root',
-        'PASSWORD': 'flfldi1212!',
+        'PASSWORD': '00000000',
         'HOST': 'localhost',
         'Port': '8000',
     }
@@ -115,12 +116,8 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Canada/Mountain'
 
-DATETIME_FORMAT = "%Y-%b-%d %H:%M:%S"
-
+DATETIME_FORMAT = '%d-%m-%Y %H:%M:%S'
 USE_L10N = False
-
-USE_I18N = True
-
 USE_TZ = False
 
 
@@ -137,3 +134,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}

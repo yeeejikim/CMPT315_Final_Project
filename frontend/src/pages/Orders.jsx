@@ -41,19 +41,19 @@ const Orders = () => {
             <header className="header">
                 <div className="header-container">
                     <div className="logo">
-                        <Link className='logotext' to="/">
+                        <Link className='logotext' to="/restaurants">
                             <img src={logo} width={70}/>
                         </Link>
                     </div>
                     <div className="user-options">
-                        <img src = {list} width = {50} onClick={toggleProfileMenu} />
+                        <img src = {list} className='profile-button' width = {50} onClick={toggleProfileMenu} />
                         <div className={`profile-menu ${showProfileMenu ? 'show' : ''}`}>
                             <div className="profile-links">
-                                <Link to="/manager">Manager</Link>
+                                {/* <Link to="/manager">Manager</Link> */}
                                 <Link to="/profile">Profile</Link>
                                 <Link to="/cart">Cart</Link>
                                 <Link to="/orders">Orders</Link>
-                                <Link to="/settings">Settings</Link>
+                                <Link to="/logout">Logout</Link>
                             </div>
                         </div>
                     </div>

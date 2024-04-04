@@ -1,10 +1,11 @@
 import React, { useState, useEffect, Component } from "react"
 import axios from 'axios';
-import "./ManagerSelector.css";
 import { ManagerCardList } from "../components/managercardlist/managercardlist.component";
 import { Link } from 'react-router-dom';
+import logo from '../header-component/logo.png'
 
 const ManagerSelector = ({ }) => {
+
     const [manager, setManagers] = useState([]);
     const [showProfileMenu, setShowProfileMenu] = useState(false);
 
@@ -39,10 +40,10 @@ const ManagerSelector = ({ }) => {
         <main className="content">
             <header className="header">
                 <div className="header-container">
-                    <div className="logo">
-                        <Link className='logotext' to="/">Logo</Link>
-                    </div>
-                    <div className="user-options">
+                    {/* <div className="logo"> */}
+                        <Link to="/" className="logotext">Back to User Selection</Link>
+                    {/* </div> */}
+                    {/* <div className="user-options">
                         <button className='profile-button' onClick={toggleProfileMenu}>Profile</button>
                         <div className={`profile-menu ${showProfileMenu ? 'show' : ''}`}>
                             <div className="profile-links">
@@ -53,7 +54,7 @@ const ManagerSelector = ({ }) => {
                                 <Link to="/settings">Settings</Link>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </header>
             <h1 className="restaurantslist">Managers</h1>

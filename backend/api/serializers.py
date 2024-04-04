@@ -41,3 +41,8 @@ class RestaurantSerializer(serializers.ModelSerializer):
         fields = ('rest_id', 'rest_name', 'rest_phone', 'rest_address', 'rest_open', 'rest_close', 'rest_image', 'menu_restaurant', 'order_restaurant', 'review_restaurant')
 
 
+class RestaurantMenuSerializer(serializers.ModelSerializer):
+    menu_restaurant = MenuItemSerializer(many = True, read_only = True)
+    class Meta:
+        model = Restaurants
+        fields = ('rest_id', 'menu_restaurant')

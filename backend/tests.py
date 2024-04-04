@@ -1,5 +1,4 @@
 import requests
-import timezone from datetime
 
 endpoint = "http://localhost:8000/order/post/"
 

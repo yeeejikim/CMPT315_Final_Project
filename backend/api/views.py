@@ -1,23 +1,17 @@
 
 
-from rest_framework import generics, viewsets
-from rest_framework.response import Response
+from rest_framework import generics, viewsets, filters
 from rest_framework.mixins import UpdateModelMixin, CreateModelMixin
-from rest_framework.permissions import IsAuthenticated
-from django.shortcuts import get_object_or_404, get_list_or_404
-from rest_framework.response import Response
-from rest_framework.mixins import UpdateModelMixin, CreateModelMixin
-from rest_framework.permissions import IsAuthenticated
-from django.shortcuts import get_object_or_404, get_list_or_404
-from .serializers import CustomerSerializer, RestaurantSerializer, MenuItemSerializer, OrderSerializer, ManagerSerializer, ReviewSerializer
+from .serializers import CustomerSerializer, RestaurantSerializer, MenuItemSerializer, OrderSerializer, ManagerSerializer, ReviewSerializer, RestaurantMenuSerializer
 from .models import Customers, Restaurants, MenuItems, Orders, Managers, Reviews
-from django.http import JsonResponse
 # Create your views here.
 
 class CustomerView(viewsets.ModelViewSet):
     serializer_class = CustomerSerializer
     queryset = Customers.objects.all()
-
+    search_fields = ['cust_name']
+    filter_backends = (filters.SearchFilter,)
+    
 class RestaurantsView(viewsets.ModelViewSet):
     serializer_class = RestaurantSerializer
     queryset = Restaurants.objects.all()
@@ -48,12 +42,10 @@ class RestaurantDetailAPIView(generics.RetrieveAPIView):
     serializer_class = RestaurantSerializer
     lookup_field = 'pk'
 
-# class RestaurantUpdateAPIView(generics.UpdateAPIView):
-#     queryset = Restaurants.objects.all()
-#     serializer_class = RestaurantSerializer
-#     lookup_field = 'pk'
-#     def update(self, serializer):
-#         instance = serializer.save()
+class RestaurantMenuListAPIView(generics.ListCreateAPIView):
+    queryset = Restaurants.objects.all()
+    serializer_class = RestaurantMenuSerializer
+    lookup_field = 'pk'
 
 class OrderListCreateAPIView(generics.ListCreateAPIView):
     queryset = Orders.objects.all()
