@@ -5,6 +5,7 @@ Django==5.0.2
 django-classy-tags==4.1.0
 django-cms==4.1.0
 django-cors-headers==4.3.1
+django-filter==24.2
 django-formtools==2.5.1
 django-sekizai==4.1.0
 django-treebeard==4.7.1

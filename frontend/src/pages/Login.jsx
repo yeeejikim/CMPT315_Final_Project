@@ -12,7 +12,11 @@ const Login = () => {
     useEffect(() => {
       const loggedInUser = localStorage.getItem('user');
       if (loggedInUser) {
-        setUser(JSON.parse(loggedInUser))
+        try {
+          setUser(JSON.parse(loggedInUser));
+        } catch (error) {
+          console.error('Error parsing user data:', error);
+        }
       }
     }, []);
   
