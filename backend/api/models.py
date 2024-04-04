@@ -33,6 +33,14 @@ class MenuItems(models.Model):
     restaurant = models.ForeignKey(Restaurants, related_name = 'menu_restaurant', on_delete = models.CASCADE)
     # order = models.ForeignKey(Order, related_name = 'menu_order', on_delete = models.CASCADE, default = 1)
 
+# class CustomDateTimeField(models.DateTimeField):
+#     def value_to_string(self, o):
+#         val = self.value_from_object(o)
+#         if val:
+#             val.replace(microsecond=0)
+#             return val.isoformat()
+#         return ''
+
 class Orders(models.Model):
     PLACED = 'Order placed'
     INPROGRESS = 'Order in progress'

@@ -26,6 +26,8 @@ class ManagerSerializer(serializers.ModelSerializer):
 
 class OrderSerializer(serializers.ModelSerializer):
     # menu = MenuSerializer(many = True, read_only = True)
+    # order_time = serializers.DateTimeField(input_formats=["%Y-%m-%d, %H:%M:%S"], format="%Y-%m-%d, %H:%M:%S")
+    # order_pickup = serializers.DateTimeField(input_formats=["%Y-%m-%d, %I:%M %p"], format="%Y-%m-%d, %H:%M:%S")
     class Meta: 
         model = Orders
         fields = ('order_id', 'order_time', 'order_status', 'order_instruction', 'order_pickup', 'customer', 'restaurant', 'menuItems', 'has_review')

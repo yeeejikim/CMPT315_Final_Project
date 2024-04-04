@@ -60,7 +60,7 @@ const Orders = () => {
                 </div>
             </header>
             <div className="tabs">
-                <button className={`tab-button ${activeTab === 'orders' ? 'active' : ''}`} onClick={() => handleTabChange('orders')}>Orders-In-Progress</button>
+                <button className={`tab-button ${activeTab === 'orders' ? 'active' : ''}`} onClick={() => handleTabChange('orders')}>Orders In Progress</button>
                 <button className={`tab-button ${activeTab === 'completedOrders' ? 'active' : ''}`} onClick={() => handleTabChange('completedOrders')}>Completed Orders</button>
             </div>
             <div className="tab-content">
