@@ -29,7 +29,7 @@ export const Card = ({ item }) => {
     const addToCart = () => {
         // Add item to local cart data structure
         const cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
-        if (cart.length === 0 || item.item_id === cart[0].restaurant){
+        if (cart.length === 0 || item.restaurant === cart[0].restaurant){
             cart.push({ ...item, quantity });  // Include quantity in cart item
             localStorage.setItem('cart', JSON.stringify(cart));
         } else {
