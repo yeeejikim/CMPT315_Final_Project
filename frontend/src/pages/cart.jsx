@@ -64,44 +64,56 @@ const Cart = () => {
   const SubmitOrder = (e) => {
     e.preventDefault();
     try {
-        const response = axios.post("/orders/", {
-          "order_time":"2024-03-18T21:56:00",
-          "order_status":"Order placed",
-          "order_instruction":"",
-          "order_pickup":"2024-03-19T01:57:00",
-          "customer": user.cust_id,
-          "restaurant": cart[0].restaurant,
-          "menuItems": finalCart,
-          "has_review": false
+      // Get current date and time
+      const currentDate = new Date();
+      // Get all date components
+      const year = currentDate.getFullYear();
+      const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+      const day = String(currentDate.getDate()).padStart(2, '0');
+      const hours = String(currentDate.getHours()).padStart(2, '0');
+      const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+      const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+      // Format the date
+      const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+
+      const response = axios.post("/orders/", {
+        "order_time": formattedDate,
+        "order_status": "Order placed",
+        "order_instruction": "",
+        "order_pickup": "2024-03-19T01:57:00",
+        "customer": user.cust_id,
+        "restaurant": cart[0].restaurant,
+        "menuItems": finalCart,
+        "has_review": false
       });
       EmptyCart(e);
     } catch (error) {
-        alert("Error in processing order.")
+      alert("Error in processing order.")
     }
   }
 
   return (
     <main className="content">
       <header className="header">
-          <div className="header-container">
-              <div className="logo">
-                  <Link className="logoimage" to="/restaurants">
-                      <img src={logo} width={70}/>
-                  </Link>
-              </div>
-              <div className="user-options">
-                  <img src = {list} className='profile-button' width = {50} onClick={toggleProfileMenu} />
-                  <div className={`profile-menu ${showProfileMenu ? 'show' : ''}`}>
-                      <div className="profile-links">
-                          {/* <Link to="/manager">Manager</Link> */}
-                          <Link to="/profile">Profile</Link>
-                          <Link to="/cart">Cart</Link>
-                          <Link to="/orders">Orders</Link>
-                          <Link to="/logout">Logout</Link>
-                      </div>
-                  </div>
-              </div>
+        <div className="header-container">
+          <div className="logo">
+            <Link className="logoimage" to="/restaurants">
+              <img src={logo} width={70} />
+            </Link>
           </div>
+          <div className="user-options">
+            <img src={list} className='profile-button' width={50} onClick={toggleProfileMenu} />
+            <div className={`profile-menu ${showProfileMenu ? 'show' : ''}`}>
+              <div className="profile-links">
+                {/* <Link to="/manager">Manager</Link> */}
+                <Link to="/profile">Profile</Link>
+                <Link to="/cart">Cart</Link>
+                <Link to="/orders">Orders</Link>
+                <Link to="/logout">Logout</Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </header>
       <div className="cart-container">
         <h2>Your Cart</h2>
