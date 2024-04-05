@@ -32,6 +32,18 @@ export const OrderCard = ({ order, fetchUpdatedOrders }) => {
         }
     };
 
+    // Validate pickup time to ensure it's not before today's time and date
+    const handlePickupTimeChange = (e) => {
+        const selectedPickupTime = new Date(e.target.value).getTime();
+        const currentTime = new Date().getTime();
+        if (selectedPickupTime < currentTime) {
+            // If selected pickup time is before current time, set pickup time to current time
+            setPickupTime(new Date().toISOString().slice(0, 16));
+        } else {
+            setPickupTime(e.target.value);
+        }
+    };
+
     return (
         <div className='orders-card-container'>
             <div>
@@ -62,7 +74,8 @@ export const OrderCard = ({ order, fetchUpdatedOrders }) => {
                 <input
                     type="datetime-local"
                     value={pickupTime}
-                    onChange={(e) => setPickupTime(e.target.value)}
+                    min={new Date().toISOString().slice(0, 16)} // Set minimum value to current time
+                    onChange={handlePickupTimeChange}
                 />
             </div>
             <div>
@@ -71,7 +84,6 @@ export const OrderCard = ({ order, fetchUpdatedOrders }) => {
             </div>
             <div className='order-card-buttons'>
                 <button className='adjust-button' onClick={adjustOrder}>Adjust</button>
-                <button className='complete-button'>Complete</button>
             </div>
         </div>
     )

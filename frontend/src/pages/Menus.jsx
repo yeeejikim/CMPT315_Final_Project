@@ -23,8 +23,12 @@ function Menu() {
         const fetchMenus = async () => {
             const response = await axios.get(`/restaurants`);
             const menuItemsData = response.data[restaurantId - 1].menu_restaurant;
+
+            // Filters the item so that if out of stock doesn't show
+            const filteredMenuItems = menuItemsData.filter(item => item.item_availability > 0);
+
             setMenuItems(menuItemsData);
-            setFilteredItems(menuItemsData);
+            setFilteredItems(filteredMenuItems);
         };
         fetchMenus();
 
