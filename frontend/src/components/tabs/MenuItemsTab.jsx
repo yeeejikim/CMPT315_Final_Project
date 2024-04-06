@@ -12,7 +12,7 @@ const MenuItemsTab = () => {
     const [newItem, setNewItem] = useState({
         item_name: "",
         item_price: 0.00,
-        item_description: "",
+        item_desc: "",
         item_availability: 0,
         item_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png",
         restaurant: managerRestaurantId
@@ -71,9 +71,9 @@ const MenuItemsTab = () => {
 
     // Submit new menu item
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         try {
-            const response = await axios.post("/menus/", { ...newItem });
+            const response = await axios.post("/menus/", { ...newItem, restaurant:managerRestaurantId });
             // Add the new item 
             setMenuItems([...menuItems, response.data]);
             setFilteredItems([...menuItems, response.data]);
@@ -81,12 +81,13 @@ const MenuItemsTab = () => {
             setNewItem({
                 item_name: "",
                 item_price: 0.00,
-                item_description: "",
+                item_desc: "",
                 item_availability: 0,
                 item_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png",
                 restaurant: managerRestaurantId
             });
             setShowModal(false);
+            
         } catch (error) {
             console.error('Error creating new menu item:', error);
         }
@@ -113,7 +114,7 @@ const MenuItemsTab = () => {
                         </Form.Group>
                         <Form.Group controlId="itemDescription">
                             <Form.Label>Item Description</Form.Label>
-                            <Form.Control as="textarea" rows={3} name="item_description" value={newItem.item_description} onChange={handleChange} />
+                            <Form.Control as="textarea" rows={3} name="item_desc" value={newItem.item_desc} onChange={handleChange} />
                         </Form.Group>
                         <Form.Group controlId="itemAvailability">
                             <Form.Label>Item Availability</Form.Label>

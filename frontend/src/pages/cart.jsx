@@ -20,7 +20,7 @@ const Cart = () => {
       setCartItems(JSON.parse(storedCart));
       // setRestaurant(cartItems[0].restaurant);
     }
-  }, []);
+  }, [cartItems]);
 
   const handleQuantityChange = (itemId, newQuantity) => {
     const updatedItems = [...updatedCart]; // Copy the cart items array
@@ -57,12 +57,11 @@ const Cart = () => {
   };
 
   const EmptyCart = (e) => {
-    e.preventDefault();
+    setCartItems([])
     localStorage.removeItem('cart')
   }
 
   const SubmitOrder = (e) => {
-    e.preventDefault();
     try {
       // Get current date and time
       const currentDate = new Date();
