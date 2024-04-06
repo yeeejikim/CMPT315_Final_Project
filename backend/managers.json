@@ -1,0 +1,29 @@
+{
+    "managers":
+    [
+        {
+            "manager_id": 1,
+            "restaurant": 1
+        },
+        {
+            "manager_id": 2,
+            "restaurant": 1
+        },
+        {
+            "manager_id": 3,
+            "restaurant": 1
+        },
+        {
+            "manager_id": 4,
+            "restaurant": 2
+        },
+        {
+            "manager_id": 5,
+            "restaurant": 2
+        },
+        {
+            "manager_id": 6,
+            "restaurant": 2
+        }
+    ]
+}

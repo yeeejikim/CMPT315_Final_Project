@@ -1,0 +1,18 @@
+{
+    "orders":
+    [
+        {
+            "order_id": 1,
+            "order_time": "2024-03-18T21:56:00",
+            "order_status": "Order placed",
+            "order_instruction": "",
+            "order_pickup": "2024-03-19T01:57:00",
+            "customer": 1,
+            "restaurant": 2,
+            "menuItems": [
+                6
+            ],
+            "has_review": false
+        }
+    ]
+}

@@ -1,4 +1,5 @@
 .manager-card-container {
+    width: 200px;
     flex: 0 0 30%; 
     background-color: #F0EFEB;
     border: 1px solid grey;
@@ -16,4 +17,12 @@
 .card-link {
     text-decoration: none; /* Remove underline */
     color: black; /* Change color */
+}
+
+h1{
+    font-size: 24px;
+}
+
+h2{
+    font-size: 20px;
 }
