@@ -1,0 +1,30 @@
+{
+    "customers":
+    [
+        {
+            "cust_id": 1,
+            "cust_pass": "user1",
+            "cust_name": "User1",
+            "cust_email": "user1@email.com",
+            "cust_phone": "123-456-7890",
+            "review_customer": []
+        },
+        {
+            "cust_id": 2,
+            "cust_pass": "user2",
+            "cust_name": "User2",
+            "cust_email": "user2@email.com",
+            "cust_phone": "123-456-7891",
+            "review_customer": []
+        },
+        {
+            "cust_id": 3,
+            "cust_pass": "user3",
+            "cust_name": "User3",
+            "cust_email": "user3@email.com",
+            "cust_phone": "123-456-7892",
+            "review_customer": []
+        }
+    ]
+}
+

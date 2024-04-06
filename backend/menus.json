@@ -1,0 +1,59 @@
+{
+    "menus":
+    [
+        {
+            "item_id": 1,
+            "item_name": "Parmesan Chicken",
+            "item_price": "32.75",
+            "item_desc": "Mushroom risotto, arugula, lemon oil, watermelon radish",
+            "item_availability": 5,
+            "item_image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRSkrgq7f-HIXGbHIwfBUzXObwUAwBufaBmGhdVgdu0GR9cFigK",
+            "restaurant": 1
+        },
+        {
+            "item_id": 2,
+            "item_name": "Truffle Fries",
+            "item_price": "13.50",
+            "item_desc": "Black pepper, truffle aioli, Grana Padano",
+            "item_availability": 3,
+            "item_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN41jzMd_3BBup7lObr0bKpwqcPMGlV0V7lw&s",
+            "restaurant": 1
+        },
+        {
+            "item_id": 3,
+            "item_name": "Chicken Alfredo",
+            "item_price": "24.75",
+            "item_desc": "Grilled or cajun chicken, cream, Grana Padano",
+            "item_availability": 3,
+            "item_image": "https://img.cdn4dd.com/p/fit=cover,width=1200,height=1200,format=auto,quality=90/media/photosV2/6d312ee0-a689-469a-9265-fce1a2f7a17a-retina-large.jpeg",
+            "restaurant": 1
+        },
+        {
+            "item_id": 4,
+            "item_name": "Fish Tacos",
+            "item_price": "20.00",
+            "item_desc": "beer battered ocean wise™ pacific cod, pico de gallo, pickled cabbage, valentina garlic mayo, avocado crema, flour tortilla",
+            "item_availability": 5,
+            "item_image": "https://www.cactusclubcafe.com/wp-content/uploads/2022/05/051122_MRO_Tacos_212545_Edit_WebMenu_750x585.jpg",
+            "restaurant": 2
+        },
+        {
+            "item_id": 5,
+            "item_name": "Rigotani Bolognese",
+            "item_price": "24.75",
+            "item_desc": "truffled pecorino, slow cooked beef and pork ragu, rosemary, fennel chili crumb, garlic crostini",
+            "item_availability": 4,
+            "item_image": "https://cookingformysoul.com/wp-content/uploads/2023/11/feat-hearty-rigatoni-bolognese-min.jpg",
+            "restaurant": 2
+        },
+        {
+            "item_id": 6,
+            "item_name": "Avocado Salad",
+            "item_price": "18.25",
+            "item_desc": "crispy chickpeas, grilled avocado, pickled red cabbage, fennel chili crumb, grana padano, lemon garlic dressing",
+            "item_availability": 4,
+            "item_image": "https://img.cdn4dd.com/cdn-cgi/image/fit=contain,width=1200,height=672,format=auto/https://doordash-static.s3.amazonaws.com/media/photosV2/ed62dd58-b18e-44e3-bbb8-015b6174333e-retina-large.jpg",
+            "restaurant": 2
+        }
+    ]
+}
